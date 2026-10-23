@@ -76,7 +76,14 @@ Hindari:
 - desain yang tidak dapat diuji atau dioperasikan.
 Setiap trade-off penting harus menjelaskan manfaat, biaya, risiko, dan alternatif.
 
-## 10. Definition of Done
+## 10. Real-Time Telemetry & Multi-Tenant SaaS Architecture
+- **Multi-Tenancy Scoping:** Pada aplikasi SaaS multi-tenant, isolasi data WAJIB ditegakkan pada lapisan data access (ORM Global Scopes) dan diuji dengan test suite khusus yang memverifikasi bahwa query dari Tenant A tidak dapat mengakses record milik Tenant B.
+- **Real-Time Telemetry & WebSockets:**
+  - Gunakan protokol WebSockets (misal: Laravel Reverb, Pusher) untuk update dengan frekuensi tinggi (sub-detik hingga 5 detik), seperti live GPS tracking kurir, live auction, atau collaborative editing.
+  - Sediakan mekanisme **graceful fallback** (misal: HTTP polling berkala) di frontend jika koneksi WebSocket terganggu oleh firewall/jaringan client.
+  - Batasi transmisi payload telemetry: kirim hanya delta atau koordinat esensial (lat, lng, heading, speed) untuk menghemat bandwidth.
+
+## 11. Definition of Done
 - [ ] Requirements dan quality attributes utama teridentifikasi.
 - [ ] Domain/module ownership dan dependency direction jelas.
 - [ ] Source of truth, consistency, transaction, dan failure boundaries ditetapkan.

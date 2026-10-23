@@ -838,7 +838,30 @@ detail yang sebanding dengan risiko dan kompleksitas pekerjaan.
 
 ------------------------------------------------------------------------
 
-# 20. Prinsip Penutup
+# 21. Standar Multi-Tenancy Scoped & Pessimistic Concurrency Locking
+
+## 21.1 Scoped Multi-Tenancy Architecture
+- Pada aplikasi SaaS multi-tenant dengan shared database, setiap tabel milik tenant WAJIB memiliki kolom `tenant_id` terindeks.
+- Lapisan ORM (misal: Eloquent Laravel) WAJIB menerapkan Global Scope otomatis (`WHERE tenant_id = ?`) serta menginjeksi `tenant_id` saat pembuatan model (`creating` event).
+- Penentuan context tenant dilakukan di layer middleware (berdasarkan subdomain, custom domain, atau header `X-Tenant-ID`/`X-Tenant-Slug`).
+
+## 21.2 Concurrency Control & Pessimistic Locking (`lockForUpdate`)
+- Pada transaksi kritis di mana beberapa pihak bersaing mengklaim sumber daya terbatas (contoh: driver mengklaim pesanan, pembeli mengambil sisa kupon/tiket promo), aplikasi WAJIB menggunakan **Pessimistic Locking**:
+  ```php
+  DB::transaction(function () use ($orderId, $driverId) {
+      $order = Order::where('id', $orderId)->lockForUpdate()->firstOrFail();
+      if ($order->status !== 'DISPATCHED') {
+          return null; // Mencegah race condition
+      }
+      $order->update(['driver_id' => $driverId, 'status' => 'ACCEPTED']);
+      return $order;
+  });
+  ```
+- Request susulan yang gagal mendapatkan row yang belum berubah WAJIB merespons dengan **HTTP 409 Conflict**, bukan 500 error atau membiarkan penugasan ganda.
+
+------------------------------------------------------------------------
+
+# 22. Prinsip Penutup
 
 Desain database yang baik bukan desain dengan indeks, constraint, atau
 fitur paling banyak. Desain yang baik adalah desain yang menjaga
