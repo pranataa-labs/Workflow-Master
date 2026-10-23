@@ -66,7 +66,8 @@ Jangan menyatakan aplikasi aman hanya karena checklist ini selesai.
 
 ## 8. Logging, privacy, dan incident readiness
 - **WAJIB:** log security events yang relevan seperti login failure, privilege changes, permission denials, dan perubahan konfigurasi penting.
-- **WAJIB:** redaksi PII dan rahasia; batasi akses dan retensi log.
+- **WAJIB:** aktifkan rotasi log harian (`daily rotating logs`) dengan batas retensi aman agar jejak forensik keamanan tersimpan rapi per tanggal kejadian dan tidak membebani ruang simpan disk.
+- **WAJIB:** redaksi PII, nomor kartu/CVV, dan rahasia; batasi akses dan retensi log.
 - **WAJIB:** bedakan audit trail yang diperlukan untuk akuntabilitas dari diagnostic logs.
 - **KONDISIONAL:** sediakan prosedur revocation, containment, evidence preservation, notification, recovery, dan post-incident review untuk sistem produksi.
 - **REKOMENDASI:** petakan kontrol pada OWASP ASVS dan pilih level verifikasi berdasarkan sensitivitas serta dampak bisnis.

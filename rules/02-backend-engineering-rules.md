@@ -534,19 +534,27 @@ diulang, atau tidak perlu diselesaikan dalam request sinkron.
 
 # 10. Observability: Logging, Metrics, Tracing
 
-## 10.1 Logging
+## 10.1 Logging & File-Based Debugging Standard (PZN / Programmer Zaman Now Pattern)
 
--   Gunakan structured logging dengan field yang konsisten, misalnya
-    timestamp, level, service, environment, request_id/correlation_id,
-    route, status, dan duration.
--   Gunakan level log secara konsisten (`debug`, `info`, `warn`, `error`
-    atau padanan tooling).
--   Jangan mencatat password, access token, API key, session cookie,
-    atau data pribadi yang tidak diperlukan.
--   Redaksi atau masking data sensitif sebelum logging.
--   Hindari log berulang berlebihan di jalur bertraffic tinggi.
--   Jangan mengandalkan log sebagai satu-satunya sumber metrik atau
-    audit.
+-   **Rotasi File Log Harian (Mandatory Daily Rotating Logs):**
+    -   **WAJIB:** Konfigurasi channel log aplikasi ke mode rotasi harian (`LOG_CHANNEL=daily` di Laravel atau Winston/Pino DailyRotateFile di Node.js), BUKAN single log file raksasa tanpa rotasi.
+    -   **WAJIB:** Tetapkan retensi log harian via environment (misal `LOG_DAILY_DAYS=14` atau `30`) guna mencegah disk server kepenuhan (*out-of-disk incident*).
+    -   File log harian (`laravel-YYYY-MM-DD.log` atau `app-YYYY-MM-DD.log`) mempermudah investigasi akar masalah (*debugging*) berdasarkan tanggal dan jam insiden yang dilaporkan pengguna.
+-   **Structured & Contextual Error Logging:**
+    -   Gunakan structured logging dengan field konsisten: timestamp, level, service, environment, request_id/correlation_id, route, status, duration, dan user_id bila terotentikasi.
+    -   **WAJIB:** Setiap penanganan exception pada operasi bisnis kritis (misal: pembayaran/checkout, webhook payment gateway, mutasi stok, registrasi akun) WAJIB mencatat log level `ERROR` yang memuat context array:
+        `Log::error('Deskripsi kegagalan alur', ['action' => '...', 'order_id' => $id, 'user_id' => Auth::id(), 'error' => $e->getMessage(), 'file' => $e->getFile(), 'line' => $e->getLine()])`.
+    -   Catat checkpoint `INFO` pada tahapan transaksional penting (misal: webhook diterima, validasi signature sukses, status terupdate).
+-   **Disiplin Log Level (RFC 5424):**
+    -   `DEBUG`: Informasi diagnostik detail untuk environment lokal/development.
+    -   `INFO`: Milestone alur normal yang berhasil dieksekusi (User Login, Order Created, Webhook Processed).
+    -   `WARNING`: Kejadian non-fatal yang membutuhkan perhatian (Rate limit mendekati ambang, retry attempt, unauthorized path scan).
+    -   `ERROR`: Kegagalan pada level use-case/transaksi yang membatalkan permintaan user.
+    -   `CRITICAL`: Kerusakan level infrastruktur (Database connection dead, Third-party service unreachable, Disk full).
+-   **Redaksi & Keamanan Data (Zero Secrets in Logs):**
+    -   Jangan pernah mencatat password mentah, access token, secret key payment gateway, nomor kartu kredit/CVV, session cookie, atau data pribadi sensitif (PII) tanpa masking (`****`).
+    -   Hindari log berulang tanpa batas di jalur loop bertraffic tinggi.
+    -   Pisahkan channel log untuk kebutuhan audit/security atau payment bila volume transaksi tinggi (`storage/logs/payment.log`).
 
 ## 10.2 Metrics
 

@@ -19,11 +19,20 @@
 - **WAJIB:** readiness tidak boleh mengakibatkan restart loop hanya karena dependency sementara gagal kecuali kebijakan platform mengharuskannya.
 
 ## 3. Logs, metrics, dan traces
+
+### 3.1 File-Based Logging & Debugging Architecture (PZN / Programmer Zaman Now Standard)
+- **WAJIB:** setiap aplikasi backend wajib menulis log ke dalam file terotasi harian (`daily rotating log files`, misal: `laravel-YYYY-MM-DD.log` atau `app-YYYY-MM-DD.log`). DILARANG menggunakan single file tanpa rotasi yang dapat memicu disk overflow.
+- **WAJIB:** tetapkan retensi file log (`LOG_DAILY_DAYS=14` atau `30`) agar file usang otomatis terhapus secara aman.
+- **WAJIB:** simpan log terstruktur untuk setiap error/exception kritis lengkap dengan context array: correlation/request ID, timestamp, user/actor ID, input payload tersanitasi, file, line number, dan stack trace.
+- **WAJIB:** pasang log checkpoint pada alur bisnis krusial (pembayaran, mutasi stok, integrasi third-party webhook, refund) untuk mempermudah audit jejak (*tracing*) saat terjadi bug atau ketidakcocokan data di masa depan.
+- **WAJIB:** pisahkan channel log khusus untuk transaksi berisiko tinggi (misal: `payment.log` atau `audit.log`) terpisah dari log umum aplikasi bila throughput transaksi tinggi.
+
+### 3.2 Metrik, Tracing, dan Kebijakan Data
 - **WAJIB:** gunakan log terstruktur untuk event penting; sertakan timestamp, service/environment/version, severity, dan correlation/request ID bila tersedia.
 - **WAJIB:** metrics mencakup latency, traffic, errors, dan saturation untuk service yang relevan.
 - **KONDISIONAL:** gunakan distributed tracing untuk alur lintas layanan atau latency diagnosis yang memerlukannya.
 - **WAJIB:** hindari high-cardinality labels yang menyebabkan biaya atau overload monitoring.
-- **WAJIB:** jangan log secrets, access tokens, password, payload sensitif, atau PII yang tidak diperlukan.
+- **WAJIB:** jangan log secrets, access tokens, password, payload sensitif, kartu kredit/CVV, atau PII yang tidak diperlukan.
 - **WAJIB:** telemetry harus memiliki retensi, akses, sampling, dan biaya yang dipertimbangkan.
 - **REKOMENDASI:** gunakan OpenTelemetry agar instrumentation tidak terkunci pada satu vendor.
 
