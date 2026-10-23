@@ -343,6 +343,13 @@ kontrak existing sudah ditetapkan.
 -   Jangan menganggap JWT dapat dicabut otomatis sebelum expiry tanpa
     mekanisme tambahan.
 
+## 4.4 Admin Route Obfuscation dan Panel Hardening
+
+-   Jangan pernah menggunakan path statis yang mudah ditebak untuk area administratif (misalnya `/admin`, `/administrator`, `/backend`).
+-   Gunakan configurable route prefix dari environment variable (misalnya `ADMIN_PREFIX` di `.env` dengan fallback default aman).
+-   Route umum/prediktif lama (`/admin`) wajib merespon dengan `404 Not Found` guna mencegah bot scanning dan pembocoran modul admin.
+-   Seluruh internal links, redirect pada controller, dan template view wajib menggunakan named routes (misal `route('admin.dashboard')`) agar perubahan prefix tidak merusak alur aplikasi.
+
 ------------------------------------------------------------------------
 
 # 5. Application Security

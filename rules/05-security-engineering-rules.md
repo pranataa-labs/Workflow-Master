@@ -28,6 +28,9 @@ Jangan menyatakan aplikasi aman hanya karena checklist ini selesai.
 - **WAJIB:** gunakan mekanisme session/token yang sesuai stack; atur expiry, rotation/revocation, penyimpanan aman, dan proteksi CSRF sesuai model autentikasi.
 - **KONDISIONAL:** operasi sensitif memerlukan re-authentication atau MFA bila sesuai risiko.
 - **WAJIB:** jangan log password, bearer token, session ID, API key, recovery code, atau credential.
+- **WAJIB:** Admin Route Obfuscation & Panel Hardening: Route atau endpoint administratif tidak boleh menggunakan path statis yang mudah ditebak (seperti `/admin`, `/administrator`, `/wp-admin`, `/backend`) secara hardcoded. Wajib mengimplementasikan prefix rahasia dinamis yang dapat dikonfigurasi melalui environment variable (misal `ADMIN_PREFIX` di `.env`).
+- **WAJIB:** Path prediktif umum (`/admin` dll) harus merespon dengan HTTP 404 Not Found (bukan 403 atau 302 redirect), agar bot scanner tidak mendeteksi keberadaan panel administrasi.
+- **WAJIB:** Semua tautan internal antarmuka dan redirect controller wajib menggunakan named routes (misal `route('admin.dashboard')`), sehingga penggantian `ADMIN_PREFIX` tidak pernah merusak fungsionalitas aplikasi.
 
 ## 4. Input, output, dan injection
 - **WAJIB:** validasi input di server berdasarkan allowlist, tipe, batas ukuran, format, dan domain invariants.

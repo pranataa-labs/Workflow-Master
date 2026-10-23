@@ -124,6 +124,16 @@ Untuk setiap fitur kritis, jangan hanya menguji skenario ideal (*happy path*). A
 
 ---
 
+## 8.1 Pengujian Keamanan & Negative Test RBAC
+
+- **WAJIB:** Uji proteksi endpoint administratif:
+  1. *Route Obfuscation Check:* Pastikan route umum/prediktif (seperti `/admin` atau `/admin/dashboard`) merespon dengan status **404 Not Found** ketika prefix rahasia diaktifkan.
+  2. *Unauthenticated Access:* Pastikan request tanpa autentikasi ke panel admin dialihkan ke halaman login (`assertRedirect('/login')`) atau menghasilkan 401.
+  3. *Unauthorized Role:* Pastikan pengguna dengan role biasa/customer ditolak aksesnya (`assertRedirect('/')` dengan pesan penolakan atau status 403 Forbidden).
+  4. *Authorized Access:* Pastikan akun dengan role admin mendapatkan status 200 OK.
+
+---
+
 ## 9. Kode Bersih pada Test (Clean Test Code)
 
 - **WAJIB (Test Harus Linier):** JANGAN gunakan percabangan rumit (`if/else`), `switch-case`, atau perulangan (`for/while`) yang kompleks di dalam test case. Jika ada banyak variasi input, gunakan fitur **Data Providers** / **Parameterized Tests** bawaan testing framework.
