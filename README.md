@@ -32,6 +32,8 @@ Modern AI models (such as Claude 3.7 Sonnet, Gemini 2.5 Flash/Pro, and GPT-4o) g
 ```text
 workflow-master/
 ├── .gitignore
+├── .cursorrules                                      # Ready-to-copy root Cursor AI configuration
+├── AGENTS.md                                         # Ready-to-copy universal AI directives
 ├── LICENSE
 ├── CONTRIBUTING.md
 ├── README.md                                         # Main documentation hub
@@ -67,6 +69,7 @@ workflow-master/
     │   ├── database.mdc                              # Database 3NF, indexes, safe migrations
     │   └── security.mdc                              # Always-on OWASP & zero-trust security guardrails
     ├── .cursorrules                                  # Legacy root Cursor configuration
+    ├── AGENTS.md                                     # Universal AI Assistant directives
     ├── claude-code-prompt.md                         # Claude Code CLI instruction prompt
     ├── copilot-instructions.md                       # GitHub Copilot instructions
     └── windsurf-rules.md                             # Windsurf AI configuration rules
