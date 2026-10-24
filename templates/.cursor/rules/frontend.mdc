@@ -1,0 +1,29 @@
+---
+description: Enforces frontend engineering standards, component architecture, state management, and accessibility.
+globs: **/*.{tsx,ts,jsx,js,vue,svelte,css,scss}
+alwaysApply: false
+---
+
+# Frontend Engineering Standards
+
+## Component Architecture
+- Use functional components with explicit TypeScript interfaces for props. Never use `any`.
+- Keep components small, focused, and single-purpose. Break complex views into modular subcomponents.
+- Prefer controlled components for forms with strict schema validation (Zod / React Hook Form).
+- Utilize early returns to avoid deeply nested JSX conditionals.
+
+## Styling & Design System
+- Adhere strictly to the project's design tokens (Tailwind CSS utility classes or design system tokens). Never introduce arbitrary hardcoded magic colors or raw hex values.
+- Enforce responsive design mobile-first: ensure all interfaces render cleanly across mobile, tablet, and desktop breakpoints.
+- Maintain consistent spacing rhythm and radius scale throughout the UI.
+
+## Accessibility (a11y) & Usability
+- Comply with WCAG 2.2 AA standards: ensure proper semantic HTML elements (`<main>`, `<header>`, `<nav>`, `<button>`).
+- Provide accessible names (`aria-label`) for icon-only buttons.
+- Ensure all interactive elements have visible focus rings (`focus-visible:ring-2`) and support full keyboard navigation.
+- Never write text with insufficient color contrast against its background.
+
+## State & Performance
+- Keep state as local as possible. Do not lift state to global stores unless shared across distant routes.
+- Implement proper loading skeletons, empty states, and Error Boundaries for all asynchronous data fetching.
+- Optimize images using framework image components with explicit dimensions to eliminate Layout Shift (CLS).

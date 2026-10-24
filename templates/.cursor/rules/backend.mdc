@@ -1,0 +1,24 @@
+---
+description: Enforces backend clean architecture, API contracts, input validation, and business logic boundaries.
+globs: **/*.{php,py,go,java,rs,rb,controller.ts,service.ts,route.ts}
+alwaysApply: false
+---
+
+# Backend Engineering Standards
+
+## Architecture & Layering
+- Follow Clean Architecture / Layered Architecture: strictly separate Routing, Controllers, Services (Domain Logic), and Repositories (Data Access).
+- Keep controllers thin: handle only request validation, HTTP status mapping, and delegation to domain services.
+- Never write raw business or calculation logic inside HTTP controllers, CLI commands, or route closures.
+
+## API Contracts & RESTful Design
+- Adhere to RESTful conventions: use semantic HTTP verbs (`GET`, `POST`, `PUT`/`PATCH`, `DELETE`) and explicit HTTP status codes (200, 201, 400, 401, 403, 404, 422, 500).
+- Standardize all JSON API responses with consistent envelopes: `{ success: boolean, message: string, data?: any, errors?: any }` or RFC 7807 Problem Details.
+- Enforce pagination on all collection endpoints. Never return unbounded lists.
+- Support idempotency on payment, ordering, and state-mutating endpoints using Idempotency Keys.
+
+## Defensive Validation & Error Handling
+- Validate all incoming request payloads against strict server-side schema rules. Never rely on frontend validation alone.
+- Never swallow exceptions with empty `catch` blocks. Log error details with contextual parameters and return clean, sanitized messages to the client.
+- Wrap multi-table mutation operations inside database transactions with explicit rollback on error.
+- Enforce explicit timeouts and circuit breaking on all external third-party API dependencies.

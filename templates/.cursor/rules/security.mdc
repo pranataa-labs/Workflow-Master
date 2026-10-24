@@ -1,0 +1,22 @@
+---
+description: Mandatory security guardrails, OWASP Top 10 defenses, zero-trust controls, and secret leak prevention.
+alwaysApply: true
+---
+
+# Security & Defensive Engineering Guardrails
+
+## Zero-Trust & Access Control
+- Enforce strict server-side authentication and authorization on all non-public endpoints. Never rely on UI client-side route guards alone.
+- Validate object-level permissions (prevent Insecure Direct Object References - IDOR): ensure the authenticated user actually owns or is authorized to access the requested resource ID.
+- Hash passwords using modern cryptographic standards (`bcrypt` with cost >= 12 or `Argon2id`). Never store plain-text or MD5/SHA1 passwords.
+
+## Injection & Attack Surface Prevention
+- Eliminate SQL Injection: use parameterized queries or ORM bindings exclusively. Never concatenate raw user input into SQL queries.
+- Sanitize and escape all dynamic user content before rendering to eliminate Cross-Site Scripting (XSS).
+- Implement Cross-Origin Resource Sharing (CORS) with strict origin allowlists. Never use `Access-Control-Allow-Origin: *` on authenticated APIs.
+- Protect state-mutating endpoints with CSRF tokens or SameSite cookie configurations.
+
+## Secret Hygiene & Data Protection
+- NEVER hardcode secrets, API keys, private certificates, or database passwords in source code or commit histories.
+- Use environment variables (`.env`) loaded through centralized config providers. Verify `.env` is listed in `.gitignore`.
+- Sanitize and redact Personally Identifiable Information (PII), passwords, and access tokens before emitting logs.

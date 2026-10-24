@@ -26,17 +26,23 @@
 | `10-performance-scalability-rules.md` | Performance budgets, profiling, load tests | Latency, throughput, query/bundle optimization, scaling |
 | `11-documentation-api-contract-rules.md` | README, OpenAPI, versioning, ADR, runbooks | API/schema/config changes dan onboarding |
 | `12-git-ai-change-management-rules.md` | Git hygiene, scope, safe AI actions, truthful reporting | Semua tugas AI yang mengubah repository |
+| `13-ai-agent-prompt-engineering-rules.md` | Structured outputs, anti-hallucination, prompt injection defense, token budgeting | Perancangan prompt, autonomous agents, tool calling, LLM apps |
+| `14-architecture-decision-records-adr.md` | Standar dokumen ADR/RFC formal, status lifecycle, decision drivers, trade-off matrix | Keputusan arsitektur besar, pemilihan teknologi inti, migrasi |
+| `15-data-engineering-pipeline-governance-rules.md` | Medallion architecture, idempotency, data quality assertions, schema evolution | Pembangunan pipeline ETL/ELT, data warehouse/lakehouse, audit data |
 
 ## Urutan prioritas
 Untuk membangun standar bertahap, mulai dengan:
 1. Security Engineering
 2. Code Quality & Review
 3. System Architecture & Design
-4. DevOps, CI/CD & Deployment
-5. Reliability & Observability
-6. Performance & Scalability
-7. Documentation & API Contract
-8. Git & AI Change Management
+4. Architecture Decision Records (ADR)
+5. DevOps, CI/CD & Deployment
+6. Reliability & Observability
+7. Performance & Scalability
+8. Documentation & API Contract
+9. Git & AI Change Management
+10. AI Agent & Prompt Engineering
+11. Data Engineering & Pipeline Governance
 
 Urutan ini merupakan rekomendasi, bukan kewajiban universal. Untuk proyek yang sudah berjalan di production, DevOps, Reliability, dan Security mungkin perlu dikerjakan bersamaan.
 
@@ -817,3 +823,117 @@ Jika tidak diminta commit, jangan commit secara otomatis.
 - NIST SSDF: https://csrc.nist.gov/Projects/ssdf
 
 **Instruksi AI:** Prioritaskan keselamatan repository dan transparansi. Jangan pernah menyamakan niat melakukan aksi dengan aksi yang benar-benar berhasil dilakukan.
+
+---
+
+# AI Agent & Prompt Engineering Rules — Production Ready
+
+**Versi:** 1.0  
+**Peran AI:** Principal AI Engineer / Agentic Systems Architect  
+**Cakupan:** Standar perancangan prompt, orkestrasi autonomous agents, keamanan model (LLM safety), pengelolaan context window, dan penegakan skema terstruktur (structured output).
+
+## 1. Tujuan dan Prinsip Utama
+- **WAJIB:** Semua interaksi dengan model bahasa (LLM) harus menghasilkan output yang deterministik, terukur, dan aman untuk dikonsumsi sistem hilir (*downstream systems*).
+- **WAJIB:** Jangan pernah memperlakukan teks bebas dari LLM sebagai data terpercaya tanpa validasi skema runtime yang ketat (*runtime schema validation*).
+- **WAJIB:** Terapkan prinsip hak akses terendah (*Principle of Least Privilege*) pada tool/function calling yang diberikan kepada agen.
+- **DILARANG:** Membiarkan agen mengeksekusi operasi destruktif (drop database, penghapusan resource cloud, mutasi massal) tanpa konfirmasi eksplisit dari manusia (*Human-in-the-Loop*).
+- **REKOMENDASI:** Pisahkan instruksi sistem (*system prompt*), konteks dinamis (*few-shot / RAG*), dan input pengguna (*user payload*) secara terisolasi.
+
+## 2. Defensive Prompting & Anti-Hallucination
+- **WAJIB:** Gunakan instruksi pembatasan tegas: instruksikan model untuk menjawab *"Data tidak ditemukan"* atau meminta klarifikasi daripada mengarang data, endpoint, atau parameter palsu.
+- **WAJIB:** Untuk ekstraksi dan transformasi data, wajib gunakan **Structured Outputs** (JSON Schema, Zod, atau Pydantic). Jangan meminta model menghasilkan JSON di dalam teks bebas tanpa penegakan parser.
+- **WAJIB:** Validasi kembali hasil parsing skema LLM menggunakan validator independen sebelum dimasukkan ke database atau business logic.
+- **REKOMENDASI:** Gunakan teknik *Chain-of-Thought (CoT)* internal atau *Scratchpad Reasoning* untuk masalah penalaran multi-langkah sebelum agen mengeluarkan kesimpulan final.
+- **WAJIB:** Jangan izinkan agen berasumsi mengenai state sistem; agen wajib memverifikasi secara empiris via tool/command yang tersedia sebelum menyatakan suatu tugas selesai.
+
+## 3. Keamanan LLM & Mitigasi Serangan (OWASP for LLM)
+- **WAJIB:** Antisipasi **Prompt Injection**: input pengguna yang tidak terpercaya harus dibungkus dengan pemisah yang jelas (seperti `<user_input>...</user_input>`) dan diperlakukan secara eksklusif sebagai data pasif, bukan instruksi eksekusi.
+- **WAJIB:** Cegah kebocoran rahasia (*Secret Leakage*): instruksikan model untuk tidak pernah mencetak ulang API keys, token autentikasi, credential database, atau informasi sensitif (PII) ke dalam response chat atau log sistem.
+- **WAJIB:** Lindungi Tool Execution dari *Indirect Prompt Injection*: data yang diambil dari web eksternal, email, atau database tidak boleh langsung dieksekusi sebagai perintah sistem.
+- **WAJIB:** Terapkan pembatasan rate limit dan sanitasi string pada seluruh prompt dinamis untuk mencegah manipulasi prompt sistem dasar (*system jailbreaking*).
+
+## 4. Context Window & Token Budget Management
+- **WAJIB:** Tetapkan batas anggaran token (*token budget*) yang realistis untuk setiap jenis panggilan (system prompt, few-shot examples, tools schema, dan max completion tokens).
+- **WAJIB:** Jangan membanjiri konteks dengan seluruh isi basis kode atau riwayat obrolan usang. Terapkan strategi *context pruning*, *summarization*, atau *sliding window*.
+- **REKOMENDASI:** Gunakan format dokumen yang padat informasi (seperti Markdown ringkas atau YAML) dibandingkan format JSON bersarang yang boros token pada saat menyuplai konteks referensi.
+- **WAJIB:** Pantau dan catat metrik konsumsi token (prompt tokens, completion tokens, latency, cache hits) untuk mendeteksi anomali biaya atau infinite loops pada autonomous agents.
+
+## 5. Tool Calling & Multi-Agent Orchestration
+- **WAJIB:** Setiap fungsi/tool yang diekspos ke agen harus memiliki nama yang spesifik, deskripsi fungsional yang eksplisit, batasan tipe data yang ketat, dan contoh nilai valid.
+- **WAJIB:** Tool calling harus bersifat idempoten (*idempotent*) atau memiliki proteksi terhadap eksekusi berulang jika terjadi kegagalan jaringan atau timeout.
+- **WAJIB:** Untuk alur multi-agen (Subagents / Peer Agents):
+  - Definisikan kontrak pesan yang kaku (*explicit communication contract*);
+  - Batasi kedalaman delegasi agen (*max recursion depth*) untuk mencegah siklus tanpa akhir (*endless delegation loops*);
+  - Berikan peran tunggal yang jelas (*Single Responsibility Agent*) untuk setiap subagen (misal: Researcher, Code Implementer, Security Auditor, Test Runner).
+- **WAJIB:** Setiap agen turunan wajib melaporkan status terstruktur: `SUCCESS`, `FAILURE`, atau `NEED_CLARIFICATION` beserta artefak bukti kerja.
+
+## 6. Verifikasi & Pengujian Berkelanjutan (AI Evals)
+- **WAJIB:** Buat test suite evaluasi otomatis (*Evaluation Dataset / Benchmarks*) untuk memverifikasi kualitas respon prompt terhadap perubahan model atau versi prompt baru.
+- **WAJIB:** Uji prompt terhadap *Negative Cases*: masukkan prompt jahat, input ambigu, dan data ekstrem untuk memastikan agen menolak dengan aman tanpa crash atau kebocoran informasi.
+- **REKOMENDASI:** Jalankan evaluasi *LLM-as-a-Judge* dengan kriteria rubrik terstandardisasi untuk menilai akurasi, kesesuaian gaya bahasa, dan kelengkapan teknis output.
+
+---
+
+# Architecture Decision Records (ADR) Rules — Production Ready
+
+**Versi:** 1.0  
+**Peran AI:** Enterprise Software Architect / Lead System Designer  
+**Cakupan:** Standar pembuatan, peninjauan, siklus hidup (*lifecycle*), dan pemeliharaan dokumen Architecture Decision Record (ADR) serta Request for Comments (RFC) dalam rekayasa sistem.
+
+## 1. Tujuan dan Prinsip Utama
+- **WAJIB:** Semua keputusan arsitektural yang berdampak besar, bersifat struktural, atau sulit dibalik (*one-way doors*) harus didokumentasikan dalam bentuk Architecture Decision Record (ADR).
+- **WAJIB:** ADR berfungsi sebagai rekaman historis (*immutable historical record*) yang menjelaskan **mengapa** (*why*) suatu keputusan diambil dalam konteks tertentu, bukan sekadar **apa** (*what*) yang dibangun.
+- **WAJIB:** Jangan menyamarkan asumsi pribadi atau preferensi subjektif sebagai argumen arsitektural. Semua opsi wajib dinilai berdasarkan bukti teknis, batasan organisasi, dan analisis untung-rugi (*trade-off analysis*).
+- **REKOMENDASI:** Simpan seluruh berkas ADR di dalam repositori kode pada folder terstandardisasi (misal: `docs/adr/` atau `doc/architecture/decisions/`) agar terikat pada kontrol versi Git.
+
+## 2. Pemicu Pembuatan Dokumen ADR
+Dokumen ADR **WAJIB** disusun apabila proyek menghadapi salah satu kondisi berikut:
+1. Pemilihan atau Pergantian Teknologi Inti (framework, bahasa, database, message broker).
+2. Topologi dan Pola Sistem (Modular Monolith, Microservices, Event-Driven, Serverless).
+3. Penyimpanan dan Konsistensi Data (sharding, caching, ACID vs Eventual Consistency).
+4. Keamanan dan Integrasi Identitas (OAuth2, OIDC, RBAC vs ABAC, trust boundaries).
+5. Protokol Komunikasi Antar-Layanan (REST, GraphQL, gRPC, WebSocket, WebRTC).
+6. Perubahan Arsitektur yang Memecah Kontrak historis.
+
+## 3. Siklus Hidup Status ADR (Lifecycle Statuses)
+Setiap dokumen ADR wajib mencantumkan salah satu status resmi: `Draft`, `Proposed`, `Accepted`, `Rejected`, `Superseded by ADR-XXX`, atau `Deprecated`.
+
+## 4. Aturan Tata Kelola Dokumen ADR
+- **WAJIB:** Penomoran file ADR harus berurutan dan menggunakan padding nol 4 digit (contoh: `0001-use-postgresql-as-primary-database.md`).
+- **WAJIB:** Dokumen ADR yang berstatus `Accepted` bersifat **immutable**. Jika arah arsitektur berubah di kemudian hari, buat dokumen ADR baru yang berstatus `Superseded`.
+- **WAJIB:** ADR harus ditinjau dan disetujui minimal oleh 1 orang Senior/Principal Engineer atau Technical Lead sebelum statusnya diubah menjadi `Accepted`.
+
+---
+
+# Data Engineering & Pipeline Governance Rules — Production Ready
+
+**Versi:** 1.0  
+**Peran AI:** Principal Data Engineer / Data Governance Architect  
+**Cakupan:** Standar perancangan pipeline data (ETL/ELT), integritas dan kualitas data (*Data Quality Assurance*), arsitektur analitik (Medallion/Dimensional Modeling), evolusi skema, dan kepatuhan tata kelola data (*Data Governance*).
+
+## 1. Tujuan dan Prinsip Utama
+- **WAJIB:** Semua pipeline data harus bersifat deterministik, dapat diulang (*replayable*), dan idempoten (*idempotent*).
+- **WAJIB:** Pisahkan secara tegas antara sistem transaksional operasional (OLTP) dan sistem analitik pemrosesan data (OLAP/Data Lakehouse).
+- **WAJIB:** Terapkan validasi kualitas data secara otomatis pada setiap tahapan ingestion, transformasi, dan loading.
+- **DILARANG:** Membuang atau mengubah log data mentah (*raw data source*). Data mentah harus selalu disimpan dalam bentuk aslinya (*immutable historical raw state*).
+
+## 2. Arsitektur dan Pemodelan Data (Data Layering)
+- **WAJIB:** Terapkan pemisahan lapisan data yang jelas:
+  1. **Bronze Layer (Raw):** Data mentah append-only, immutable, timestamped.
+  2. **Silver Layer (Cleaned & Conformed):** Data ter-deduplikasi, normalisasi UTC, pembersihan anomali.
+  3. **Gold Layer (Curated & Aggregated):** Data mart, Star Schema (Fact & Dimension tables).
+- **WAJIB:** Semua tabel dimensi mendefinisikan strategi perubahan historis (SCD Type 1 atau SCD Type 2).
+- **WAJIB:** Semua tabel fakta memiliki granularity eksplisit dan bersifat append-only.
+
+## 3. Idempotensi Pipeline & Manajemen Kegagalan
+- **WAJIB:** Gunakan teknik pemuatan data idempoten (`MERGE` / `UPSERT` atau *Partition Overwrite*).
+- **WAJIB:** Setiap batch data memiliki metadata: `pipeline_run_id`, `source_system`, `ingestion_timestamp`, dan `record_hash`.
+- **WAJIB:** Sediakan mekanisme *Dead Letter Queue (DLQ)* / *Quarantine Table* untuk baris yang gagal validasi tanpa memutus pipeline.
+
+## 4. Validasi Kualitas Data Otomatis (Data Quality Checks)
+Pipeline wajib memvalidasi 6 asersi kualitas: *Uniqueness*, *Completeness*, *Range & Type Validity*, *Referential Integrity*, *Freshness & Timeliness*, dan *Data Drift / Circuit Breaking*.
+
+## 5. Keamanan, Privasi & Kepatuhan Data (Data Governance)
+- **WAJIB:** Masking, tokenization, atau hashing pada kolom PII di Silver dan Gold layer.
+- **WAJIB:** Kebijakan retensi data (*Data Retention & Purging Policy*) dan kepatuhan hak penghapusan (*Right to be Forgotten*).
+

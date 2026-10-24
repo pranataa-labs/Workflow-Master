@@ -1,0 +1,23 @@
+---
+description: Enforces database schema design, 3NF normalization, relational integrity, indexing, and migration standards.
+globs: **/*{migration,schema,model,dao,entity,sql}*
+alwaysApply: false
+---
+
+# Database Engineering Standards
+
+## Relational Schema Design
+- Design relational schemas in Third Normal Form (3NF) by default. Denormalize only when justified by proven query profiling.
+- Use explicit foreign key constraints (`ON DELETE CASCADE` or `ON DELETE RESTRICT`) to preserve relational integrity.
+- Use appropriate data types: use unsigned integers or UUIDs/ULIDs for primary keys, `DECIMAL(precision, scale)` for monetary values (never `FLOAT`), and explicit character limits on string columns.
+
+## Indexing & Query Optimization
+- Index all foreign key columns, frequent `WHERE` filter predicates, and `ORDER BY` sorting fields.
+- Create composite indexes following the Leftmost Prefix rule.
+- Eliminate N+1 query patterns: always use eager loading (`with()` in ORMs or explicit SQL `JOIN`s).
+- Prohibit `SELECT *` in production code. Select only required columns to minimize memory footprint and network I/O.
+
+## Safe Migrations & Concurrency
+- Ensure all migration files are reversible (`up` and `down` methods).
+- Prevent deadlocks and race conditions: use pessimistic locking (`FOR UPDATE`) or optimistic concurrency tokens (`version` column) on shared transactional resources (balances, stock quotas, queue counters).
+- Never run long-running blocking DDL statements directly on high-traffic production tables without a zero-downtime online schema migration strategy.

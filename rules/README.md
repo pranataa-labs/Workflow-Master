@@ -2,7 +2,7 @@
 
 **Versi:** 2.0  
 **Bahasa:** Indonesia  
-**Tujuan:** Katalog lengkap 12 aturan rekayasa perangkat lunak (*Engineering Rules*) berstandar industri untuk memandu AI Agent (Cursor, Claude Code, Windsurf, Copilot, Antigravity, dll.) maupun software engineer dalam merancang, mengimplementasikan, mereview, menguji, dan merilis sistem siap produksi.
+**Tujuan:** Katalog lengkap 15 aturan rekayasa perangkat lunak (*Engineering Rules*) berstandar industri untuk memandu AI Agent (Cursor, Claude Code, Windsurf, Copilot, Antigravity, dll.) maupun software engineer dalam merancang, mengimplementasikan, mereview, menguji, dan merilis sistem siap produksi.
 
 ---
 
@@ -16,6 +16,9 @@
    - **Refactoring & Code Review:** Aturan `06` + `07` + `12`
    - **DevOps, Infra & CI/CD:** Aturan `08` + `09` + `12`
    - **Optimization & Scale:** Aturan `03` + `10` + `09`
+   - **AI Agentic Systems & LLM:** Aturan `12` + `13` + `05`
+   - **System Architecture & Major Decision:** Aturan `07` + `14` + `11`
+   - **Data Engineering & Pipelines:** Aturan `03` + `15` + `09`
 3. **Hierarki Penegakan:**
    - **WAJIB:** Default *non-negotiable*. Pengecualian hanya sah jika ada persetujuan eksplisit dari lead engineer/owner dan risiko terdokumentasi.
    - **KONDISIONAL:** Berlaku ketika fitur, teknologi, ancaman, atau konteks terkait digunakan dalam proyek.
@@ -24,7 +27,7 @@
 
 ---
 
-## 2. Katalog 12 Engineering Rules
+## 2. Katalog 15 Engineering Rules
 
 | Kode | Nama Dokumen | Fokus Utama | Kapan Digunakan |
 |---|---|---|---|
@@ -40,6 +43,9 @@
 | **10** | [`10-performance-scalability-rules.md`](./10-performance-scalability-rules.md) | Performance budgets, profiling, caching strategies, horizontal scaling, query tuning | Latency spikes, throughput bottlenecks, high traffic readiness |
 | **11** | [`11-documentation-api-contract-rules.md`](./11-documentation-api-contract-rules.md) | OpenAPI/Swagger specs, versioning strategy, README standards, operational runbooks | Publikasi API, dokumentasi arsitektur, developer onboarding |
 | **12** | [`12-git-ai-change-management-rules.md`](./12-git-ai-change-management-rules.md) | Conventional Commits, atomic diffs, truthful verification reporting, safe AI agent operations | Semua aktivitas AI coding assistant yang memodifikasi repository |
+| **13** | [`13-ai-agent-prompt-engineering-rules.md`](./13-ai-agent-prompt-engineering-rules.md) | Structured outputs (Zod/JSON Schema), anti-hallucination, prompt injection defense, token budgeting | Perancangan prompt, autonomous agents, tool/function calling, LLM apps |
+| **14** | [`14-architecture-decision-records-adr.md`](./14-architecture-decision-records-adr.md) | Standar dokumen ADR/RFC formal, status lifecycle, decision drivers, trade-off matrix | Keputusan arsitektur besar, pemilihan teknologi inti, migrasi struktural |
+| **15** | [`15-data-engineering-pipeline-governance-rules.md`](./15-data-engineering-pipeline-governance-rules.md) | Medallion architecture, idempotency, data quality assertions, schema evolution, PII governance | Pembangunan pipeline ETL/ELT, data warehouse/lakehouse, audit kepatuhan |
 
 ---
 

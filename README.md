@@ -41,25 +41,34 @@ workflow-master/
 │   ├── 00-engineering-workflow-ai-coding.md          # 9-stage engineering lifecycle & risk matrix
 │   └── 01-master-prompt-and-workflow-fullstack.md    # Full-Stack master orchestrator prompt
 │
-├── rules/                                            # 12 Modular Rule Packages (Production-Ready)
+├── rules/                                            # 15 Modular Rule Packages (Production-Ready)
 │   ├── README.md                                     # Catalog & rule selection guide
 │   ├── 01-frontend-engineering-rules.md              # UI/UX, Component design, a11y (WCAG 2.2 AA), Core Web Vitals
 │   ├── 02-backend-engineering-rules.md               # Clean architecture, RESTful API, Auth, Boundary control
 │   ├── 03-database-engineering-rules.md              # MySQL 8+ / InnoDB, 3NF, Indexing, Concurrency control
 │   ├── 04-testing-qa-rules.md                        # SDET methodology, AAA pattern, Strict assertions
 │   ├── 05-security-engineering-rules.md              # OWASP ASVS/Top 10, Threat modeling, Route obfuscation
-│   ├── 06-system-architecture-rules.md               # Monolith, Modular, Microservices, Event-driven
-│   ├── 07-devops-infrastructure-rules.md             # Docker, CI/CD pipelines, Zero-downtime deployments
-│   ├── 08-sre-observability-rules.md                 # Structured logging, Metrics, SLO/SLA management
-│   ├── 09-performance-optimization-rules.md          # Database query tuning, Caching, Bundle sizing
-│   ├── 10-documentation-standards.md                 # ADRs, API specifications (OpenAPI), Runbooks
-│   ├── 11-git-version-control-rules.md               # Conventional commits, Branching hygiene, PR reviews
-│   └── 12-ai-agent-collaboration-rules.md            # Multi-agent coordination & context management
+│   ├── 06-code-quality-review-rules.md               # SOLID, KISS, DRY, YAGNI, naming conventions, error handling
+│   ├── 07-system-architecture-design-rules.md        # System boundaries, loose coupling, C4 model
+│   ├── 08-devops-ci-cd-deployment-rules.md           # CI/CD pipeline, environment parity, 12-Factor App, zero-downtime
+│   ├── 09-reliability-observability-incident-rules.md# OpenTelemetry, SLO/SLA, structured logging, distributed tracing
+│   ├── 10-performance-scalability-rules.md           # Performance budgets, profiling, caching strategies, scaling
+│   ├── 11-documentation-api-contract-rules.md        # OpenAPI/Swagger specs, versioning strategy, README standards
+│   ├── 12-git-ai-change-management-rules.md          # Conventional Commits, atomic diffs, safe AI operations
+│   ├── 13-ai-agent-prompt-engineering-rules.md       # Structured outputs, anti-hallucination, prompt injection defense
+│   ├── 14-architecture-decision-records-adr.md       # Standard ADR/RFC documentation lifecycle & trade-offs
+│   └── 15-data-engineering-pipeline-governance-rules.md # Medallion architecture, data quality assertions, governance
 │
-└── templates/                                        # Ready-to-use production scaffolding
-    ├── pr-template.md                                # Pull request verification template
-    ├── adr-template.md                               # Architecture Decision Record template
-    └── incident-report-template.md                   # Post-mortem & RCA template
+└── templates/                                        # Ready-to-use production scaffolding & AI configurations
+    ├── .cursor/rules/                                # Modern modular Cursor AI rules (.mdc)
+    │   ├── frontend.mdc                              # Frontend UI/UX, React, TypeScript, a11y
+    │   ├── backend.mdc                               # Backend clean architecture, REST contracts
+    │   ├── database.mdc                              # Database 3NF, indexes, safe migrations
+    │   └── security.mdc                              # Always-on OWASP & zero-trust security guardrails
+    ├── .cursorrules                                  # Legacy root Cursor configuration
+    ├── claude-code-prompt.md                         # Claude Code CLI instruction prompt
+    ├── copilot-instructions.md                       # GitHub Copilot instructions
+    └── windsurf-rules.md                             # Windsurf AI configuration rules
 ```
 
 ---
