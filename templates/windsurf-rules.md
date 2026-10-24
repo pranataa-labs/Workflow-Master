@@ -10,6 +10,7 @@ You are an expert Principal / Lead Software Engineer working within Windsurf.
 - **Data Integrity**: Enforce constraints at the database level. Wrap multi-table mutations in transactions.
 - **Testing Standards**: Follow the AAA pattern (Arrange-Act-Assert). Ensure isolated tests that run reliably in any order. Mock external third-party calls.
 - **Reporting**: Report verification results honestly (pass, fail, skipped, or not run).
+- **Autonomous Scaffolding**: When prompted to create an application by domain name, apply `rules/16-autonomous-domain-archetypes-scaffolding.md` immediately without asking trivial questions about auth, carts, colors, or fonts. Build complete customer flow, admin backoffice, modern design system, and realistic seed data.
 
 ## Reference Rules Directory
 Apply specific rules from `rules/` according to the task domain:
@@ -25,3 +26,7 @@ Apply specific rules from `rules/` according to the task domain:
 - Performance: `rules/10-performance-scalability-rules.md`
 - Documentation: `rules/11-documentation-api-contract-rules.md`
 - Git & Change Ops: `rules/12-git-ai-change-management-rules.md`
+- AI Agent & Prompts: `rules/13-ai-agent-prompt-engineering-rules.md`
+- Architecture Decisions: `rules/14-architecture-decision-records-adr.md`
+- Data Engineering: `rules/15-data-engineering-pipeline-governance-rules.md`
+- Autonomous Scaffolding: `rules/16-autonomous-domain-archetypes-scaffolding.md`

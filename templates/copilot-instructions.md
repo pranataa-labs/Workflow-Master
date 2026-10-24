@@ -20,6 +20,9 @@ When suggesting code, refactoring, or generating tests:
    - Mock all external network services and external API endpoints.
    - Write descriptive test method names that express scenario and expected behavior.
 
-4. **Change Hygiene:**
+4. **Autonomous Domain Scaffolding:**
+   - When requested to scaffold a new domain system (e.g. store, queue, POS, LMS), automatically include both public/customer and backoffice admin flows, modern design aesthetics (Inter font, smooth blue/slate palette), and realistic seed data without asking trivial clarifying questions.
+
+5. **Change Hygiene:**
    - Keep commits and changes focused and atomic.
    - Follow Conventional Commits format (`feat`, `fix`, `refactor`, `test`, `docs`).

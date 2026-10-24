@@ -24,6 +24,7 @@ Always follow the 9-stage engineering workflow:
 - Testing (AAA): Write reliable tests following Arrange-Act-Assert. Never make live external HTTP calls in unit/integration tests (mock them).
 - Git Hygiene: Write Conventional Commits (`feat:`, `fix:`, `refactor:`, `test:`, `docs:`). Make focused, atomic changes.
 - Truthful Reporting: Never claim code is tested or passing unless verified with actual runtime execution output.
+- Autonomous Project Scaffolding: When asked to build a system from scratch by domain name (e.g., "toko buku", "klinik antrian", "kasir/POS", "SaaS"), DO NOT ask trivial questions about auth, carts, colors, or fonts. Immediately apply `rules/16-autonomous-domain-archetypes-scaffolding.md`: expand the full domain archetype (Public/Customer flow, Admin Backoffice with KPI cards & CRUD, opinionated modern UI with Inter font & Smooth Blue/Slate palette, and realistic seed data with demo accounts).
 
 ## 3. Modular Rules Reference
 When performing specific tasks, follow the corresponding standards in the `rules/` directory:
@@ -39,3 +40,7 @@ When performing specific tasks, follow the corresponding standards in the `rules
 - Performance: `rules/10-performance-scalability-rules.md`
 - API Documentation: `rules/11-documentation-api-contract-rules.md`
 - Git & Change Ops: `rules/12-git-ai-change-management-rules.md`
+- AI Agent & Prompts: `rules/13-ai-agent-prompt-engineering-rules.md`
+- Architecture Decisions: `rules/14-architecture-decision-records-adr.md`
+- Data Engineering: `rules/15-data-engineering-pipeline-governance-rules.md`
+- Autonomous Scaffolding: `rules/16-autonomous-domain-archetypes-scaffolding.md`

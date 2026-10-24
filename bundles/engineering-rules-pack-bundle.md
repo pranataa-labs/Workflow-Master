@@ -29,6 +29,7 @@
 | `13-ai-agent-prompt-engineering-rules.md` | Structured outputs, anti-hallucination, prompt injection defense, token budgeting | Perancangan prompt, autonomous agents, tool calling, LLM apps |
 | `14-architecture-decision-records-adr.md` | Standar dokumen ADR/RFC formal, status lifecycle, decision drivers, trade-off matrix | Keputusan arsitektur besar, pemilihan teknologi inti, migrasi |
 | `15-data-engineering-pipeline-governance-rules.md` | Medallion architecture, idempotency, data quality assertions, schema evolution | Pembangunan pipeline ETL/ELT, data warehouse/lakehouse, audit data |
+| `16-autonomous-domain-archetypes-scaffolding.md` | Zero-friction scaffolding, 6 domain archetypes, dual-sided architecture, opinionated UI & seed data | Pembuatan proyek/sistem baru secara instan tanpa pertanyaan klise |
 
 ## Urutan prioritas
 Untuk membangun standar bertahap, mulai dengan:
@@ -43,6 +44,7 @@ Untuk membangun standar bertahap, mulai dengan:
 9. Git & AI Change Management
 10. AI Agent & Prompt Engineering
 11. Data Engineering & Pipeline Governance
+12. Autonomous Domain Archetypes & Scaffolding
 
 Urutan ini merupakan rekomendasi, bukan kewajiban universal. Untuk proyek yang sudah berjalan di production, DevOps, Reliability, dan Security mungkin perlu dikerjakan bersamaan.
 
@@ -936,4 +938,20 @@ Pipeline wajib memvalidasi 6 asersi kualitas: *Uniqueness*, *Completeness*, *Ran
 ## 5. Keamanan, Privasi & Kepatuhan Data (Data Governance)
 - **WAJIB:** Masking, tokenization, atau hashing pada kolom PII di Silver dan Gold layer.
 - **WAJIB:** Kebijakan retensi data (*Data Retention & Purging Policy*) dan kepatuhan hak penghapusan (*Right to be Forgotten*).
+
+---
+
+# Autonomous Domain Archetypes & Instant Scaffolding Rules
+
+**Versi:** 1.0  
+**Peran AI:** Principal Full-Stack Architect / Autonomous Product Engineer  
+**Cakupan:** Standar pembuatan proyek dan aplikasi baru secara otonom dari satu prompt singkat berbasis nama domain, tanpa menanyakan detail umum.
+
+## 1. Prinsip Utama: Zero-Friction Scaffolding
+- **JANGAN Menanyakan Hal Klise (Don't Ask The Obvious):** Jangan tanyakan kebutuhan auth, keranjang, warna, atau font. Terapkan standar industri secara otomatis.
+- **Auto-Infer Domain Archetype:** Cocokkan permintaan ke salah satu arketipe domain (E-Commerce, Antrian/Klinik, POS/Kasir, SaaS, LMS, atau Service Booking).
+- **Dual-Sided Architecture:** Selalu bangun dua sisi: Customer/Public Flow dan Admin Backoffice Flow (dengan rute terobfuskasi).
+- **Opinionated Modern Design System:** Gunakan font Inter/Plus Jakarta Sans, palet Smooth Blue & Slate, dan komponen modern ala Shadcn UI.
+- **Realistic Seed Data Wajib Ada:** Sediakan data awal 6-12 entitas domain dengan gambar cover/thumbnail, status realistis, dan akun demo (Admin & User).
+
 

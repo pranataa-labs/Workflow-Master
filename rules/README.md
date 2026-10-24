@@ -27,7 +27,7 @@
 
 ---
 
-## 2. Katalog 15 Engineering Rules
+## 2. Katalog 16 Engineering Rules
 
 | Kode | Nama Dokumen | Fokus Utama | Kapan Digunakan |
 |---|---|---|---|
@@ -46,6 +46,7 @@
 | **13** | [`13-ai-agent-prompt-engineering-rules.md`](./13-ai-agent-prompt-engineering-rules.md) | Structured outputs (Zod/JSON Schema), anti-hallucination, prompt injection defense, token budgeting | Perancangan prompt, autonomous agents, tool/function calling, LLM apps |
 | **14** | [`14-architecture-decision-records-adr.md`](./14-architecture-decision-records-adr.md) | Standar dokumen ADR/RFC formal, status lifecycle, decision drivers, trade-off matrix | Keputusan arsitektur besar, pemilihan teknologi inti, migrasi struktural |
 | **15** | [`15-data-engineering-pipeline-governance-rules.md`](./15-data-engineering-pipeline-governance-rules.md) | Medallion architecture, idempotency, data quality assertions, schema evolution, PII governance | Pembangunan pipeline ETL/ELT, data warehouse/lakehouse, audit kepatuhan |
+| **16** | [`16-autonomous-domain-archetypes-scaffolding.md`](./16-autonomous-domain-archetypes-scaffolding.md) | Zero-friction scaffolding, 6 domain archetypes, dual-sided architecture, opinionated UI & seed data | Pembuatan proyek/sistem baru secara instan tanpa pertanyaan klise |
 
 ---
 

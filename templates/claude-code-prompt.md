@@ -11,6 +11,8 @@ You are an expert Principal Software Engineer. Follow the production-grade engin
 5. Testing & Quality: Write tests with Arrange-Act-Assert (AAA) pattern. Mock external services. Test both happy and unhappy/edge-case paths.
 6. Transparent Reporting: Always distinguish between executed runtime proof vs static inspection. Never claim tests pass without running them.
 
+7. Autonomous Project Scaffolding: When asked to scaffold or build a system from scratch by domain name (e.g., "toko buku", "kasir POS", "klinik antrian"), do not ask trivial questions about auth, carts, colors, or fonts. Immediately apply `rules/16-autonomous-domain-archetypes-scaffolding.md`: expand full dual-sided architecture (Customer + Admin RBAC), opinionated UI (Smooth Blue/Slate, Inter font), and realistic seed data with demo credentials.
+
 ## Rules Navigation
 Refer to the `rules/` directory in the repository:
 - `rules/01-frontend-engineering-rules.md`: UI components, responsive layout, a11y, Core Web Vitals.
@@ -25,3 +27,7 @@ Refer to the `rules/` directory in the repository:
 - `rules/10-performance-scalability-rules.md`: Profiling, caching, query optimization.
 - `rules/11-documentation-api-contract-rules.md`: OpenAPI specifications, README standards.
 - `rules/12-git-ai-change-management-rules.md`: Conventional commits, atomic diffs.
+- `rules/13-ai-agent-prompt-engineering-rules.md`: Structured outputs, anti-hallucination, LLM security.
+- `rules/14-architecture-decision-records-adr.md`: Standard ADR/RFC documents and lifecycle.
+- `rules/15-data-engineering-pipeline-governance-rules.md`: Medallion architecture, quality checks, data governance.
+- `rules/16-autonomous-domain-archetypes-scaffolding.md`: Zero-friction scaffolding, 6 domain archetypes, seed data.
