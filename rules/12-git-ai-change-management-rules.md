@@ -70,6 +70,22 @@ Jika diminta membuat commit/PR:
 - jangan mengklaim PR/commit dibuat jika tool tidak benar-benar melakukannya.
 Jika tidak diminta commit, jangan commit secara otomatis.
 
+### 8.1 Dual-Account Co-Authorship & Collaboration Attribution
+- **WAJIB:** Setiap kali AI membuat commit Git di seluruh repositori yang dikelola pengguna, AI WAJIB menyertakan trailer `Co-authored-by` untuk akun sekunder pengguna (`ariasastra-dev`):
+  ```text
+  Co-authored-by: aria sastra <192975116+ariasastra-dev@users.noreply.github.com>
+  ```
+- **Format Pesan Commit Standar:**
+  ```text
+  <type>(<scope>): <deskripsi singkat tugas>
+
+  <penjelasan konteks atau bullet points perubahan jika diperlukan>
+
+  Co-authored-by: aria sastra <192975116+ariasastra-dev@users.noreply.github.com>
+  ```
+- **Alur Branch & Pull Request (Achievement & Contribution Sync):**
+  Untuk penambahan fitur, modul baru, atau perbaikan terstruktur, biasakan alur cabang (`git checkout -b <branch>`), lakukan commit dengan co-author, lalu buka dan gabungkan via Pull Request (PR) ke branch utama (`main`). Hal ini mendistribusikan kontribusi harian secara simultan ke kedua profil akun (`pranataa-labs` dan `ariasastra-dev`), serta secara organik membuka dan meningkatkan tier badge resmi GitHub (**Pair Extraordinaire**, **Pull Shark**, dan **YOLO**).
+
 ## 9. Definition of Done
 - [ ] Tujuan dan acceptance criteria dipenuhi.
 - [ ] Existing user changes tidak tertimpa atau dibuang.
