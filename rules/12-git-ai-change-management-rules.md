@@ -85,6 +85,7 @@ Jika tidak diminta commit, jangan commit secara otomatis.
   ```
 - **Alur Branch & Pull Request (Achievement & Contribution Sync):**
   Untuk penambahan fitur, modul baru, atau perbaikan terstruktur, biasakan alur cabang (`git checkout -b <branch>`), lakukan commit dengan co-author, lalu buka dan gabungkan via Pull Request (PR) ke branch utama (`main`). Hal ini mendistribusikan kontribusi harian secara simultan ke kedua profil akun (`pranataa-labs` dan `ariasastra-dev`), serta secara organik membuka dan meningkatkan tier badge resmi GitHub (**Pair Extraordinaire**, **Pull Shark**, dan **YOLO**).
+- **Otomatisasi Undangan Collaborator:** Setiap kali AI menginisialisasi atau mempublikasikan repositori baru ke GitHub organisasi/pengguna, AI WAJIB secara otomatis mengundang akun `ariasastra-dev` sebagai collaborator dengan push permission (`gh api -X PUT /repos/<owner>/<repo>/collaborators/ariasastra-dev -f permission=push`) tanpa perlu diminta.
 
 ## 9. Definition of Done
 - [ ] Tujuan dan acceptance criteria dipenuhi.
