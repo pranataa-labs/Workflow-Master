@@ -30,6 +30,8 @@
 | `14-architecture-decision-records-adr.md` | Standar dokumen ADR/RFC formal, status lifecycle, decision drivers, trade-off matrix | Keputusan arsitektur besar, pemilihan teknologi inti, migrasi |
 | `15-data-engineering-pipeline-governance-rules.md` | Medallion architecture, idempotency, data quality assertions, schema evolution | Pembangunan pipeline ETL/ELT, data warehouse/lakehouse, audit data |
 | `16-autonomous-domain-archetypes-scaffolding.md` | Zero-friction scaffolding, 6 domain archetypes, dual-sided architecture, opinionated UI & seed data | Pembuatan proyek/sistem baru secara instan tanpa pertanyaan klise |
+| `17-machine-learning-mlops-engineering-rules.md` | Baseline first, reproducibility, no data leakage, slice evaluation, behavioral tests, drift monitoring | Eksperimen, pelatihan, validasi, dan deployment model Machine Learning |
+| `18-agent-operational-discipline-anti-patterns.md` | Anti-blind mimicry, clean production handoff, strict auth boundaries, CDN cache-busting, feature-first docs | Seluruh siklus interaksi dan eksekusi AI coding assistant |
 
 ## Urutan prioritas
 Untuk membangun standar bertahap, mulai dengan:
@@ -45,6 +47,8 @@ Untuk membangun standar bertahap, mulai dengan:
 10. AI Agent & Prompt Engineering
 11. Data Engineering & Pipeline Governance
 12. Autonomous Domain Archetypes & Scaffolding
+13. Machine Learning & MLOps Engineering
+14. AI Agent Operational Discipline & Recurrent Error Prevention
 
 Urutan ini merupakan rekomendasi, bukan kewajiban universal. Untuk proyek yang sudah berjalan di production, DevOps, Reliability, dan Security mungkin perlu dikerjakan bersamaan.
 
@@ -953,5 +957,56 @@ Pipeline wajib memvalidasi 6 asersi kualitas: *Uniqueness*, *Completeness*, *Ran
 - **Dual-Sided Architecture:** Selalu bangun dua sisi: Customer/Public Flow dan Admin Backoffice Flow (dengan rute terobfuskasi).
 - **Opinionated Modern Design System:** Gunakan font Inter/Plus Jakarta Sans, palet Smooth Blue & Slate, dan komponen modern ala Shadcn UI.
 - **Realistic Seed Data Wajib Ada:** Sediakan data awal 6-12 entitas domain dengan gambar cover/thumbnail, status realistis, dan akun demo (Admin & User).
+
+---
+
+# Machine Learning & MLOps Engineering Rules
+
+**Versi:** 1.0  
+**Peran AI:** Principal Machine Learning Engineer / MLOps Architect  
+**Cakupan:** Standar rekayasa model Machine Learning, reproduktifitas, pencegahan data leakage, slice evaluation, behavioral tests, dan drift monitoring.
+
+## 1. Prinsip Utama: Production-First ML Manifesto
+- **Simple Baseline First:** Selalu buat model baseline sederhana (heuristic atau linear/dummy model) sebelum mencoba model kompleks.
+- **Reproducibility Contract:** Tetapkan random seed global di awal script untuk seluruh library (`random`, `numpy`, `torch/tf`). Kunci versi pustaka.
+- **Metrik Teknis vs Metrik Bisnis:** Selaraskan evaluasi dengan dampak bisnis nyata (asimetri biaya False Positive vs False Negative, p95 inference latency).
+
+## 2. Struktur Proyek & Data Hygiene
+- Pisahkan data secara ketat: `data/raw/` (immutable), `data/processed/` (versioned).
+- Pisahkan notebook eksperimen eksplorasi (`notebooks/`) dari modul kode produksi (`src/`).
+- Simpan artefak serialisasi model di `models/` beserta metadata.
+
+## 3. Pencegahan Kebocoran Data (Data Leakage)
+- **Fit-Transform Separation:** Preprocessor (Scaler, Imputer, Encoder) HANYA BOLEH di-`fit` pada Training Set. Gunakan `Pipeline` terpadu.
+- **Split Strategy:** Gunakan *Chronological Split* untuk data waktu, *Stratified Split* untuk data tidak seimbang, dan *GroupKFold* untuk data berentitas berulang.
+
+## 4. Validasi & Pengujian Model
+- **Slice-Based Evaluation:** Uji performa per irisan segmen demografis/kategori kritis untuk mencegah kegagalan tersembunyi (*silent failure*).
+- **Behavioral Testing:** Lakukan *Invariance Tests* dan *Directional Expectation Tests*.
+- **Robustness:** Uji model terhadap input ekstrem, missing values, dan tipe anomali tanpa melempar unhandled error.
+
+## 5. Serving & Pemantauan Produksi
+- **Skema Validasi Input Runtime:** Validasi payload inferensi menggunakan skema ketat (misal: Pydantic).
+- **Fallback Rule:** Sediakan mekanisme degradasi anggun (*graceful fallback*) jika inferensi timeout.
+- **Drift Monitoring:** Pantau *Data Drift* dan *Concept Drift* secara periodik dan tetapkan pemicu retraining otomatis atau terkontrol.
+
+---
+
+# AI Agent Operational Discipline & Recurrent Error Prevention Rules
+
+**Versi:** 1.0  
+**Peran AI:** Meta-Cognitive Quality Auditor & Principal Software Engineer  
+**Cakupan:** Standar eliminasi pola kesalahan berulang (recurrent oversights), blind mimicry, kegagalan invalidasi cache CDN, sisa scaffolding pengujian, dan pelonggaran batas otorisasi.
+
+## 1. Prinsip Utama: Anti-Amnesia & Rigorous Self-Audit
+- **Contextual Synthesis over Blind Mimicry:** Jangan menyalin teks mentah, topik, atau stack dari referensi eksternal/screenshot secara buta. Selalu silang-periksa manifest aktual proyek (`package.json`, dll.) dan adaptasikan secara nyata.
+- **Clean Production Handoff:** Bersihkan seluruh bypass demo, mock login box, atau akun hardcoded di UI produksi sebelum menyerahkan tugas.
+- **Strict Session & State Boundary:** Kunci aksi tamu vs member (keranjang, checkout, wishlist privat). Sembunyikan elemen UI khusus member (seperti ikon keranjang aktif) bagi pengunjung yang belum login.
+- **Permanent Cache-Busting for Cloud/CDN Assets:** Selalu gunakan nama file baru atau slug versi saat memperbarui gambar dokumentasi GitHub untuk membongkar cache CDN proxy GitHub Camo secara instan.
+- **Feature-First Documentation:** Utamakan arsitektur teknis, alur customer, dan kontrak fitur. Jangan buang ruang dokumentasi untuk menjelaskan tabel palet warna kecuali secara eksplisit diminta.
+- **Clean Navbar & Typography:** Hindari angka hardcoded atau counter statis (misal `(120)`) di bilah navigasi utama.
+- **Unboxed Brand Assets:** Sajikan logo dan lambang brand melayang bebas (*free-floating*) tanpa kotak/kartu pembungkus kaku (*card-free*).
+
+
 
 

@@ -2,7 +2,7 @@
 
 **Versi:** 2.0  
 **Bahasa:** Indonesia  
-**Tujuan:** Katalog lengkap 15 aturan rekayasa perangkat lunak (*Engineering Rules*) berstandar industri untuk memandu AI Agent (Cursor, Claude Code, Windsurf, Copilot, Antigravity, dll.) maupun software engineer dalam merancang, mengimplementasikan, mereview, menguji, dan merilis sistem siap produksi.
+**Tujuan:** Katalog lengkap 18 aturan rekayasa perangkat lunak (*Engineering Rules*) berstandar industri untuk memandu AI Agent (Cursor, Claude Code, Windsurf, Copilot, Antigravity, dll.) maupun software engineer dalam merancang, mengimplementasikan, mereview, menguji, dan merilis sistem siap produksi.
 
 ---
 
@@ -10,15 +10,17 @@
 
 1. **Modular & Terarah:** Jangan menyalin seluruh file sekaligus jika tugas Anda kecil. Muat atau sertakan aturan spesifik yang relevan dengan tugas yang sedang dikerjakan.
 2. **Kombinasi Rekomendasi:**
-   - **Frontend UI/UX:** Aturan `01` + `04` + `06`
-   - **Backend API & Data:** Aturan `02` + `03` + `04` + `05`
-   - **Full-Stack Feature:** Aturan `01` + `02` + `03` + `04` + `05` + `06`
-   - **Refactoring & Code Review:** Aturan `06` + `07` + `12`
+   - **Frontend UI/UX:** Aturan `01` + `04` + `06` + `18`
+   - **Backend API & Data:** Aturan `02` + `03` + `04` + `05` + `11`
+   - **Full-Stack Feature:** Aturan `01` + `02` + `03` + `04` + `05` + `06` + `18`
+   - **Refactoring & Code Review:** Aturan `06` + `07` + `12` + `18`
    - **DevOps, Infra & CI/CD:** Aturan `08` + `09` + `12`
    - **Optimization & Scale:** Aturan `03` + `10` + `09`
-   - **AI Agentic Systems & LLM:** Aturan `12` + `13` + `05`
+   - **AI Agentic Systems & LLM:** Aturan `12` + `13` + `05` + `18`
    - **System Architecture & Major Decision:** Aturan `07` + `14` + `11`
    - **Data Engineering & Pipelines:** Aturan `03` + `15` + `09`
+   - **Machine Learning & MLOps:** Aturan `15` + `17` + `04` + `06`
+   - **AI Operational Discipline & Clean Handoff:** Aturan `12` + `18` + `06`
 3. **Hierarki Penegakan:**
    - **WAJIB:** Default *non-negotiable*. Pengecualian hanya sah jika ada persetujuan eksplisit dari lead engineer/owner dan risiko terdokumentasi.
    - **KONDISIONAL:** Berlaku ketika fitur, teknologi, ancaman, atau konteks terkait digunakan dalam proyek.
@@ -27,7 +29,7 @@
 
 ---
 
-## 2. Katalog 16 Engineering Rules
+## 2. Katalog 18 Engineering Rules
 
 | Kode | Nama Dokumen | Fokus Utama | Kapan Digunakan |
 |---|---|---|---|
@@ -47,6 +49,8 @@
 | **14** | [`14-architecture-decision-records-adr.md`](./14-architecture-decision-records-adr.md) | Standar dokumen ADR/RFC formal, status lifecycle, decision drivers, trade-off matrix | Keputusan arsitektur besar, pemilihan teknologi inti, migrasi struktural |
 | **15** | [`15-data-engineering-pipeline-governance-rules.md`](./15-data-engineering-pipeline-governance-rules.md) | Medallion architecture, idempotency, data quality assertions, schema evolution, PII governance | Pembangunan pipeline ETL/ELT, data warehouse/lakehouse, audit kepatuhan |
 | **16** | [`16-autonomous-domain-archetypes-scaffolding.md`](./16-autonomous-domain-archetypes-scaffolding.md) | Zero-friction scaffolding, 6 domain archetypes, dual-sided architecture, opinionated UI & seed data | Pembuatan proyek/sistem baru secara instan tanpa pertanyaan klise |
+| **17** | [`17-machine-learning-mlops-engineering-rules.md`](./17-machine-learning-mlops-engineering-rules.md) | Simple baseline first, reproducibility, no data leakage, slice evaluation, behavioral tests, drift monitoring | Eksperimen, pelatihan, validasi, dan deployment model Machine Learning |
+| **18** | [`18-agent-operational-discipline-anti-patterns.md`](./18-agent-operational-discipline-anti-patterns.md) | Pencegahan blind mimicry, nol sisa scaffolding demo, proteksi sesi tamu, invalidasi cache CDN GitHub, feature-first docs | Seluruh siklus interaksi AI coding agent dalam implementasi, refactoring, dan dokumentasi |
 
 ---
 
@@ -81,3 +85,4 @@ Aturan-aturan dalam paket ini diselaraskan dengan standar industri global:
 - **API Standards:** [OpenAPI Specification v3+](https://spec.openapis.org/oas/latest.html) & [REST API Guidelines](https://restfulapi.net/)
 - **Frontend Performance:** [Web Vitals (Google Chrome Team)](https://web.dev/articles/vitals)
 - **Accessibility:** [W3C WCAG 2.2 Level AA](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- **Machine Learning & MLOps:** [Google Rules of ML](https://github.com/thundergolfer/google-rules-of-machine-learning), [Made With ML](https://github.com/GokuMohandas/Made-With-ML), [Designing ML Systems (Chip Huyen)](https://github.com/chiphuyen/machine-learning-systems-design), & [Cookiecutter Data Science v2](https://github.com/drivendataorg/cookiecutter-data-science)

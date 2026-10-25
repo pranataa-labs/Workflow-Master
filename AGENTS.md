@@ -25,6 +25,14 @@ Semua pekerjaan rekayasa pada repositori ini WAJIB mematuhi 9 tahapan alur kerja
   - Bangun arsitektur dua sisi (*Dual-Sided*: Customer Flow + Admin Backoffice dengan rute terproteksi/diobfuskasi).
   - Terapkan sistem desain modern (*Smooth Blue & Slate* / slate-oklch, font *Inter* atau *Plus Jakarta Sans*, UI responsif ala *Shadcn*).
   - Sertakan data awal realistis (*seed data*) 6–12 item domain lengkap dengan gambar sampul dan akun demo siap pakai (`admin@example.com` / `password123` dan `user@example.com` / `password123`).
+- **Rule 17 — Machine Learning & MLOps:** Terapkan *Simple Baseline First*, kunci random seed global untuk reproduktifitas, cegah *Data Leakage* dengan `Pipeline` terpadu, lakukan *Slice Analysis*, dan lindungi inferensi runtime.
+- **Rule 18 — AI Operational Discipline & Anti-Amnesia:**
+  - *Contextual Synthesis over Blind Mimicry:* Jangan menyalin teks/topik referensi eksternal secara buta; sesuaikan dengan manifest aktual proyek (`package.json`, dll.).
+  - *Clean Production Handoff:* Bersihkan seluruh bypass demo dan form pre-filled sebelum menyerahkan UI produksi.
+  - *Strict Auth & Session Boundaries:* Kunci aksi tamu vs member (keranjang, checkout) dan sembunyikan elemen UI khusus member bagi tamu.
+  - *Permanent Cache-Busting:* Gunakan nama file baru saat memperbarui gambar dokumentasi GitHub agar tidak terjebak cache proxy GitHub Camo.
+  - *Feature-First Documentation:* Utamakan kapabilitas teknis dan fitur bisnis; jangan boroskan ruang untuk tabel kode warna.
+  - *Unboxed Assets:* Biarkan logo melayang bebas (*card-free*) tanpa bingkai kotak kaku.
 - **Rule 05 — Security Baseline:** Validasi semua input di server, gunakan prepared statements, cegah SQL injection, XSS, dan lindungi kredensial.
 - **Rule 04 — Testing & QA:** Terapkan pola AAA (Arrange-Act-Assert), isolasi test, dan mock external services.
 - **Rule 12 — Git & AI Hygiene:** Buat commit atomik dengan standar Conventional Commits (`feat:`, `fix:`, `refactor:`, `test:`, `docs:`).
