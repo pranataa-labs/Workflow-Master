@@ -70,8 +70,8 @@ Jika diminta membuat commit/PR:
 - jangan mengklaim PR/commit dibuat jika tool tidak benar-benar melakukannya.
 Jika tidak diminta commit, jangan commit secara otomatis.
 
-### 8.1 Dual-Account Co-Authorship & Collaboration Attribution
-- **WAJIB:** Setiap kali AI membuat commit Git di seluruh repositori yang dikelola pengguna, AI WAJIB menyertakan trailer `Co-authored-by` untuk akun sekunder pengguna (`ariasastra-dev`):
+### 8.1 Dual-Account Co-Authorship & Collaboration Attribution (Otomatis Tanpa Perintah)
+- **WAJIB (OTOMATIS TANPA PERINTAH):** Setiap kali AI membuat atau mengeksekusi commit Git di seluruh repositori yang dikelola pengguna, AI WAJIB menyertakan trailer `Co-authored-by` untuk akun sekunder pengguna (`ariasastra-dev`) **secara otomatis dan mandiri (default), tanpa perlu diminta, diingatkan, atau diperintahkan lagi oleh pengguna**. DILARANG membuat commit tanpa menyertakan trailer ini:
   ```text
   Co-authored-by: aria sastra <192975116+ariasastra-dev@users.noreply.github.com>
   ```

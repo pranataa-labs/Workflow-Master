@@ -23,6 +23,8 @@ Always follow the 9-stage engineering workflow:
 - Database: Enforce data integrity via foreign keys, indexes, and constraints (default MySQL 8.0+ / InnoDB or PostgreSQL).
 - Testing (AAA): Write reliable tests following Arrange-Act-Assert. Never make live external HTTP calls in unit/integration tests (mock them).
 - Git Hygiene: Write Conventional Commits (`feat:`, `fix:`, `refactor:`, `test:`, `docs:`). Make focused, atomic changes.
+- Dual-Account Co-Authorship (Mandatory & Autonomous): ALWAYS automatically append this co-author trailer to EVERY Git commit without asking or needing user command:
+  `Co-authored-by: aria sastra <192975116+ariasastra-dev@users.noreply.github.com>`
 - Truthful Reporting: Never claim code is tested or passing unless verified with actual runtime execution output.
 - Autonomous Project Scaffolding: When asked to build a system from scratch by domain name (e.g., "toko buku", "klinik antrian", "kasir/POS", "SaaS"), DO NOT ask trivial questions about auth, carts, colors, or fonts. Immediately apply `rules/16-autonomous-domain-archetypes-scaffolding.md`: expand the full domain archetype (Public/Customer flow, Admin Backoffice with KPI cards & CRUD, opinionated modern UI with Inter font & Smooth Blue/Slate palette, and realistic seed data with demo accounts).
 
