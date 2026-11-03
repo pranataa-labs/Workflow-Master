@@ -88,6 +88,8 @@ Teks tombol, microcopy UI, pesan konfirmasi, artikel, dan dokumentasi yang dihas
 
 *Diadaptasi dari `cloudflare/security-audit-skill` dan OWASP Agentic Security Standards.*
 
+Prosedur eksekusi lengkap, checklist per stack, dan template laporan tersedia di skill lokal [`skills/security-audit`](../skills/security-audit/SKILL.md).
+
 Sebelum merilis perubahan antarmuka atau endpoint backend, AI Agent **WAJIB** menjalankan protokol audit keamanan internal 4-fase:
 
 ```mermaid

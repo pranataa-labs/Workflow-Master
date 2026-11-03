@@ -25,3 +25,5 @@ Direktori ini menyediakan **paket gabungan monolitik (*All-in-One Prompt Bundles
   - Lingkungan AI IDE modern (Cursor, Windsurf, Claude Code, GitHub Copilot, Antigravity) yang dapat membaca konteks file secara otomatis.
   - Menghemat token jendela konteks (*context window efficiency*) dengan hanya menyertakan aturan yang relevan dengan tugas spesifik.
   - Mencegah kebingungan instruksi (*instruction diluting*) pada tugas-tugas terfokus (misal: hanya styling UI, hanya membuat query SQL).
+
+> Bundle hanya memuat rules. Untuk prosedur yang dapat dieksekusi (verifikasi, review diff, audit keamanan, publish repo), gunakan skill di [`skills/`](../skills/README.md).

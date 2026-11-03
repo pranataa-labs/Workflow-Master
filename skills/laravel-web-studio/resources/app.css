@@ -1,0 +1,145 @@
+/* ==========================================================================
+   Design tokens — Tailwind CSS v4 (resources/css/app.css)
+   Contoh di bawah: TOKO KUE (hangat, homemade, premium).
+   Ganti nilai sesuai Blueprint. JANGAN hapus baris @source bawaan Laravel.
+   ========================================================================== */
+
+@import 'tailwindcss';
+
+/* Font self-hosted (npm i @fontsource-variable/fraunces @fontsource-variable/nunito-sans).
+   Jika import CSS paket gagal di-resolve, pindahkan import ke resources/js/app.js. */
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/nunito-sans';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+  /* --- Tipografi --- */
+  --font-sans: 'Nunito Sans Variable', ui-sans-serif, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
+
+  /* --- Brand: cokelat kakao (600 = CTA) --- */
+  --color-brand-50: #fbf5f1;
+  --color-brand-100: #f5e8df;
+  --color-brand-200: #eacfbe;
+  --color-brand-300: #dbae94;
+  --color-brand-400: #c68866;
+  --color-brand-500: #9a5d38;
+  --color-brand-600: #7a4a2e;
+  --color-brand-700: #633b25;
+  --color-brand-800: #4d2e1d;
+  --color-brand-900: #3a2316;
+  --color-brand-950: #24150d;
+
+  /* --- Accent: stroberi --- */
+  --color-accent-50: #fef2f5;
+  --color-accent-100: #fde3ea;
+  --color-accent-200: #fbc8d6;
+  --color-accent-300: #f59fb6;
+  --color-accent-400: #ee7595;
+  --color-accent-500: #e4577a;
+  --color-accent-600: #cf3a62;
+  --color-accent-700: #ad2b4f;
+  --color-accent-800: #8f2645;
+  --color-accent-900: #78233d;
+  --color-accent-950: #430e1f;
+
+  /* --- Ink: netral hangat (bukan abu murni) --- */
+  --color-ink-50: #faf7f5;
+  --color-ink-100: #f2ede9;
+  --color-ink-200: #e4dcd5;
+  --color-ink-300: #cec2b8;
+  --color-ink-400: #a89889;
+  --color-ink-500: #857465; /* hanya untuk teks besar/ikon; teks kecil pakai ink-600+ */
+  --color-ink-600: #6a5b4e;
+  --color-ink-700: #54483e;
+  --color-ink-800: #3d342d;
+  --color-ink-900: #2b241f;
+  --color-ink-950: #1a1512;
+
+  /* --- Surface --- */
+  --color-surface: #fff8f0;        /* latar halaman (krem) */
+  --color-surface-raised: #ffffff; /* kartu, drawer */
+  --color-surface-sunken: #f7ede2; /* section alternatif */
+
+  /* --- Status --- */
+  --color-success-50: #ecfdf3;
+  --color-success-600: #15803d;
+  --color-success-700: #166534;
+  --color-warning-50: #fffbeb;
+  --color-warning-600: #b45309;
+  --color-warning-700: #92400e;
+  --color-danger-50: #fef2f2;
+  --color-danger-600: #dc2626;
+  --color-danger-700: #b91c1c;
+  --color-info-50: #eff6ff;
+  --color-info-600: #2563eb;
+  --color-info-700: #1d4ed8;
+
+  /* --- WhatsApp (teks gelap agar lulus kontras) --- */
+  --color-wa: #25d366;
+  --color-wa-hover: #1ebe5b;
+  --color-wa-ink: #052e1f;
+
+  /* --- Bentuk (kepribadian: lembut/ramah) --- */
+  --radius-card: 1.5rem;   /* rounded-card */
+  --radius-btn: 9999px;    /* rounded-btn */
+  --radius-field: 0.875rem;/* rounded-field */
+
+  /* --- Elevasi (di-tint warna ink) --- */
+  --shadow-card: 0 1px 2px rgb(43 36 31 / 0.05), 0 1px 1px rgb(43 36 31 / 0.03);
+  --shadow-raised: 0 8px 24px -6px rgb(43 36 31 / 0.14), 0 2px 6px rgb(43 36 31 / 0.06);
+  --shadow-overlay: 0 24px 48px -12px rgb(43 36 31 / 0.28);
+
+  /* --- Motion --- */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-padding-top: 5rem; /* tinggi header sticky */
+  }
+
+  body {
+    @apply bg-surface font-sans text-base text-ink-800 antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3 {
+    @apply font-display text-ink-950 text-balance;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-600;
+  }
+
+  [x-cloak] {
+    display: none !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-16 lg:py-24;
+  }
+
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.12em] text-accent-700;
+  }
+}

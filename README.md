@@ -1,17 +1,17 @@
 <div align="center">
 
-# ⚡ Workflow Master: AI Engineering Operating System
+# Workflow Master: AI Engineering Operating System
 
 **Production-Ready Software Engineering Operating System & AI Standards**
 
+[`ai-agents`](https://github.com/topics/ai-agents) • [`agent-skills`](https://github.com/topics/agent-skills) • [`ai-coding-assistant`](https://github.com/topics/ai-coding-assistant) • [`software-engineering`](https://github.com/topics/software-engineering) • [`best-practices`](https://github.com/topics/best-practices) • [`code-quality`](https://github.com/topics/code-quality) • [`owasp`](https://github.com/topics/owasp) • [`conventional-commits`](https://github.com/topics/conventional-commits) • [`cursor-rules`](https://github.com/topics/cursor-rules) • [`prompt-engineering`](https://github.com/topics/prompt-engineering)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![Standard: Production Ready](https://img.shields.io/badge/Standard-Production--Ready-emerald.svg)](#)
-[![AI Assistants](https://img.shields.io/badge/AI%20Compatible-Cursor%20%7C%20Claude%20%7C%20Windsurf%20%7C%20Copilot-8A2BE2.svg)](#)
-[![Version](https://img.shields.io/badge/Version-2.0.0-orange.svg)](#)
+[![AI Assistants](https://img.shields.io/badge/AI%20Compatible-Antigravity%20%7C%20Cursor%20%7C%20Claude%20%7C%20Windsurf%20%7C%20Copilot-1f6feb.svg)](#)
+[![Version](https://img.shields.io/badge/Version-2.1.0-orange.svg)](#)
 
-*A comprehensive suite of engineering standards (Frontend, Backend, Database, QA, Security, Architecture, DevOps, SRE, Performance, Docs, Git) and structured workflows designed to maximize the capabilities of AI Coding Assistants without compromising security, data integrity, or architectural elegance.*
-
----
+*Engineering standards (Frontend, Backend, Database, QA, Security, Architecture, DevOps, SRE, Performance, Docs, Git), executable agent skills, and structured workflows that let AI coding assistants move fast without compromising security, data integrity, or architecture.*
 
 </div>
 
@@ -25,108 +25,129 @@
 
 ---
 
-## 📌 Why Workflow Master Is Essential
+## Why Workflow Master Is Essential
 
-Modern AI models (such as Claude 3.7 Sonnet, Gemini 2.5 Flash/Pro, and GPT-4o) generate code at unprecedented speeds. However, without rigorous architectural boundaries, AI agents frequently:
+Modern AI models generate code at unprecedented speed. Without explicit boundaries, AI agents frequently:
 1. Introduce unnecessary abstractions and overengineering.
-2. Rely on frontend assumptions and neglect robust server-side validation.
-3. Write brittle, flaky automated tests or falsely claim test passage without execution.
-4. Hardcode secrets, leak environment credentials, or corrupt live database schemas.
+2. Rely on frontend assumptions and neglect server-side validation.
+3. Write brittle tests or claim tests pass without running them.
+4. Hardcode secrets, leak credentials, or corrupt live database schemas.
 
-**Workflow Master** serves as an operational governance framework that elevates AI from an unpredictable code generator into a disciplined **Principal / Staff Software Engineer** strictly adhering to global industry standards.
+Workflow Master combines three layers:
+
+| Layer | Role | Location |
+|---|---|---|
+| **Rules** | What is mandatory (standards, constraints, anti-patterns) | [`rules/`](./rules) |
+| **Skills** | How to execute it (step-by-step procedures plus runnable scripts) | [`skills/`](./skills) |
+| **Workflows** | When to apply it (9-stage lifecycle and orchestration prompts) | [`workflows/`](./workflows) |
 
 ---
 
-## 🏗️ Repository Architecture
+## Agent Skills
 
-```text
-workflow-master/
-├── .gitignore
-├── .cursorrules                                      # Ready-to-copy root Cursor AI configuration
-├── AGENTS.md                                         # Ready-to-copy universal AI directives
-├── LICENSE
-├── CONTRIBUTING.md
-├── README.md                                         # Main documentation hub
-│
-├── workflows/                                        # Orchestration prompts & AI workflows
-│   ├── README.md                                     # AI lifecycle guidelines
-│   ├── 00-engineering-workflow-ai-coding.md          # 9-stage engineering lifecycle & risk matrix
-│   └── 01-master-prompt-and-workflow-fullstack.md    # Full-Stack master orchestrator prompt
-│
-├── rules/                                            # 20 Modular Rule Packages (Production-Ready)
-│   ├── README.md                                     # Catalog & rule selection guide
-│   ├── 01-frontend-engineering-rules.md              # UI/UX, Component design, a11y (WCAG 2.2 AA), Core Web Vitals
-│   ├── 02-backend-engineering-rules.md               # Clean architecture, RESTful API, Auth, Boundary control
-│   ├── 03-database-engineering-rules.md              # MySQL 8+ / InnoDB, 3NF, Indexing, Concurrency control
-│   ├── 04-testing-qa-rules.md                        # SDET methodology, AAA pattern, Strict assertions
-│   ├── 05-security-engineering-rules.md              # OWASP ASVS/Top 10, Threat modeling, Route obfuscation
-│   ├── 06-code-quality-review-rules.md               # SOLID, KISS, DRY, YAGNI, naming conventions, error handling
-│   ├── 07-system-architecture-design-rules.md        # System boundaries, loose coupling, C4 model
-│   ├── 08-devops-ci-cd-deployment-rules.md           # CI/CD pipeline, environment parity, 12-Factor App, zero-downtime
-│   ├── 09-reliability-observability-incident-rules.md# OpenTelemetry, SLO/SLA, structured logging, distributed tracing
-│   ├── 10-performance-scalability-rules.md           # Performance budgets, profiling, caching strategies, scaling
-│   ├── 11-documentation-api-contract-rules.md        # OpenAPI/Swagger specs, versioning strategy, README standards
-│   ├── 12-git-ai-change-management-rules.md          # Conventional Commits, atomic diffs, safe AI operations
-│   ├── 13-ai-agent-prompt-engineering-rules.md       # Structured outputs, anti-hallucination, prompt injection defense
-│   ├── 14-architecture-decision-records-adr.md       # Standard ADR/RFC documentation lifecycle & trade-offs
-│   ├── 15-data-engineering-pipeline-governance-rules.md # Medallion architecture, data quality assertions, governance
-│   ├── 16-autonomous-domain-archetypes-scaffolding.md # Zero-friction scaffolding, 6 domain blueprints, seed data
-│   ├── 17-machine-learning-mlops-engineering-rules.md # Baseline first, no data leakage, slice evaluation, drift monitoring
-│   ├── 18-agent-operational-discipline-anti-patterns.md # Anti-blind mimicry, clean production, strict auth, cache-busting
-│   ├── 19-anti-slop-humanized-ui-design-rules.md     # Anti-slop frontend, mobile ergonomics, humanized writing, security audit skills
-│   └── 20-concise-code-clean-logs-and-docs-rules.md  # Anti-emoji clutter, kata baku (formal standard), concise code comments & docs
-│
-├── skills/                                           # Reusable Agent Skills (Universal SKILL.md format)
-│   ├── clean-code-concise-docs/                      # Concise code, clean print()/logs, professional comments, anti-emoji slop
-│   │   └── SKILL.md                                  # Production clean code & concise documentation directives
-│   └── git-commit-craft/                             # Automated Conventional Commits & disciplined Git history
-│       └── SKILL.md                                  # Production Git commit instructions & validation
-│
-└── templates/                                        # Ready-to-use production scaffolding & AI configurations
-    ├── git/                                          # Git discipline templates (commitlint, husky, git-cliff)
-    │   ├── commitlint.config.js                      # Commitlint conventional rule configuration
-    │   ├── git-commit-template.txt                   # Git commit message template with co-author trailer
-    │   ├── cliff.toml                                # Automated changelog generator configuration
-    │   └── setup-git-discipline.ps1                  # 1-Click setup script for repositories
-    ├── .cursor/rules/                                # Modern modular Cursor AI rules (.mdc)
-    │   ├── frontend.mdc                              # Frontend UI/UX, React, TypeScript, a11y
-    │   ├── backend.mdc                               # Backend clean architecture, REST contracts
-    │   ├── database.mdc                              # Database 3NF, indexes, safe migrations
-    │   └── security.mdc                              # Always-on OWASP & zero-trust security guardrails
-    ├── .cursorrules                                  # Legacy root Cursor configuration
-    ├── AGENTS.md                                     # Universal AI Assistant directives
-    ├── claude-code-prompt.md                         # Claude Code CLI instruction prompt
-    ├── copilot-instructions.md                       # GitHub Copilot instructions
-    └── windsurf-rules.md                             # Windsurf AI configuration rules
+Eleven skills in the universal `SKILL.md` format, compatible with Antigravity, Claude Code, and any agent that loads skill folders. Full catalog: [`skills/README.md`](./skills/README.md).
+
+| Skill | Stage | Script | Purpose |
+|---|---|---|---|
+| [`domain-scaffolding`](./skills/domain-scaffolding/SKILL.md) | Design, Plan | - | Rule 16 dual-sided apps with seed data and demo accounts |
+| [`laravel-web-studio`](./skills/laravel-web-studio/SKILL.md) | Design, Implement | yes | End-to-end Laravel + Tailwind studio for SME websites |
+| [`shadcn-admin-design-system`](./skills/shadcn-admin-design-system/SKILL.md) | Implement | - | Slate oklch design system, dashboard and admin patterns |
+| [`clean-code-concise-docs`](./skills/clean-code-concise-docs/SKILL.md) | Implement | - | Concise code, clean logs, emoji-free docs, formal language |
+| [`verify-and-test`](./skills/verify-and-test/SKILL.md) | Verify | `verify.ps1` | Stack detection, typecheck/lint/test/build with real evidence |
+| [`diff-review`](./skills/diff-review/SKILL.md) | Review | `scan-diff.ps1` | Secret, PII, debug leftover and demo credential scanner |
+| [`security-audit`](./skills/security-audit/SKILL.md) | Review | - | Four-phase OWASP audit with stack checklists and report template |
+| [`git-commit-craft`](./skills/git-commit-craft/SKILL.md) | Review | - | Conventional Commits with mandatory co-author trailer |
+| [`github-repo-publish`](./skills/github-repo-publish/SKILL.md) | Release | `publish-repo.ps1` | Repo creation, collaborator invite, topic sync |
+| [`release-deploy-check`](./skills/release-deploy-check/SKILL.md) | Release | `check-deploy.ps1` | Watch GitHub Actions and probe the live URL and assets |
+| [`readme-github-sync`](./skills/readme-github-sync/SKILL.md) | Report | `check-readme.ps1`, `sync-topics.ps1` | README validator, GitHub-safe math, topic sync |
+
+### Install
+
+```powershell
+git clone https://github.com/pranataa-labs/workflow-master.git
+cd workflow-master
+
+# Antigravity / Gemini (global)
+powershell -ExecutionPolicy Bypass -File skills/install-skills.ps1 -Target "$HOME\.gemini\config\skills"
+
+# Claude Code (global)
+powershell -ExecutionPolicy Bypass -File skills/install-skills.ps1 -Target "$HOME\.claude\skills"
 ```
 
 ---
 
-## 🚀 The 9-Stage Engineering Discipline
+## Repository Architecture
 
-All engineering tasks orchestrated by Workflow Master follow a strict nine-phase verification cycle:
-
-1. **Triage:** Define task scope, categorize domain requirements, and assign risk levels (Low, Medium, High).
-2. **Discover:** Perform read-only exploration of contracts, configuration files, and dependencies before modifying code.
-3. **Design:** Establish explicit acceptance criteria, edge-case definitions, and rollback contingency plans.
-4. **Plan:** Sequence minimal, modular, and non-breaking file modifications.
-5. **Implement:** Author clean, type-safe, maintainable code adhering to project conventions.
-6. **Verify:** Execute local test suites, linters, and typecheckers, reporting truth-telling verification metrics.
-7. **Review:** Inspect git diffs, ensure zero secrets or sensitive keys are exposed, and enforce access authorization.
-8. **Release:** Validate deployment readiness and health check verifications.
-9. **Report:** Deliver transparent post-implementation summaries and test outputs to stakeholders.
+```text
+workflow-master/
+├── AGENTS.md                      # Ready-to-copy universal AI directives
+├── .cursorrules                   # Ready-to-copy root Cursor configuration
+├── README.md
+│
+├── workflows/                     # 9-stage lifecycle and orchestration prompts
+│   ├── 00-engineering-workflow-ai-coding.md
+│   └── 01-master-prompt-and-workflow-fullstack.md
+│
+├── rules/                         # 20 modular rule packages
+│   ├── 01-frontend ... 10-performance
+│   ├── 11-documentation-api-contract-rules.md
+│   ├── 12-git-ai-change-management-rules.md
+│   ├── 13-ai-agent ... 15-data-engineering
+│   ├── 16-autonomous-domain-archetypes-scaffolding.md
+│   ├── 17-machine-learning-mlops-engineering-rules.md
+│   ├── 18-agent-operational-discipline-anti-patterns.md
+│   ├── 19-anti-slop-humanized-ui-design-rules.md
+│   └── 20-concise-code-clean-logs-and-docs-rules.md
+│
+├── skills/                        # Executable agent skills (SKILL.md + scripts)
+│   ├── README.md                  # Skill catalog and stage mapping
+│   ├── install-skills.ps1         # Installer for Antigravity / Claude Code
+│   ├── clean-code-concise-docs/
+│   ├── diff-review/               # scripts/scan-diff.ps1
+│   ├── domain-scaffolding/        # resources/blueprint-template.md
+│   ├── git-commit-craft/
+│   ├── github-repo-publish/       # scripts/publish-repo.ps1
+│   ├── laravel-web-studio/        # references/, resources/, scripts/
+│   ├── readme-github-sync/        # scripts/check-readme.ps1, sync-topics.ps1
+│   ├── release-deploy-check/      # scripts/check-deploy.ps1
+│   ├── security-audit/            # resources/audit-report-template.md
+│   ├── shadcn-admin-design-system/
+│   └── verify-and-test/           # scripts/verify.ps1
+│
+├── bundles/                       # Single-file rule bundles for chat-based assistants
+└── templates/                     # AGENTS.md, Cursor .mdc, Claude, Copilot, Windsurf, git hooks
+```
 
 ---
 
-## 🔒 Security Baseline & Admin Route Obfuscation
+## The 9-Stage Engineering Discipline
 
-Workflow Master mandates enterprise security defenses across all software systems:
-- **Admin Route Obfuscation:** Standard administrative routes (`/admin`) must never be statically exposed in production. Endpoints must be dynamically configured via environment variables (e.g. `ADMIN_PREFIX`), responding with **HTTP 404 Not Found** on default paths to eliminate automated reconnaissance.
-- **Strict Role-Based Access Control:** Zero-trust authorization enforced at the server layer with clear flash security notifications upon permission denial.
-- **Cryptographic & Input Boundaries:** Strict parameter binding, anti-CSRF token defense, and HTML sanitization on all input streams.
+```mermaid
+flowchart LR
+  T["1 Triage"] --> D["2 Discover"] --> DS["3 Design"] --> P["4 Plan"] --> I["5 Implement"] --> V["6 Verify"] --> R["7 Review"] --> RL["8 Release"] --> RP["9 Report"]
+```
+
+1. **Triage:** Define scope, classify the task, and assign risk (Low, Medium, High).
+2. **Discover:** Read contracts, configuration, and dependencies before modifying code.
+3. **Design:** Set acceptance criteria, edge cases, and rollback plans. Skill: `domain-scaffolding`.
+4. **Plan:** Sequence minimal, modular, non-breaking changes.
+5. **Implement:** Write clean, type-safe code following project conventions. Skills: `clean-code-concise-docs`, `shadcn-admin-design-system`, `laravel-web-studio`.
+6. **Verify:** Run tests, linters, and typecheckers; report real output. Skill: `verify-and-test`.
+7. **Review:** Inspect diffs, block secrets, enforce authorization. Skills: `diff-review`, `security-audit`, `git-commit-craft`.
+8. **Release:** Confirm the pipeline and live health checks. Skills: `github-repo-publish`, `release-deploy-check`.
+9. **Report:** Deliver factual summaries and documentation. Skill: `readme-github-sync`.
 
 ---
 
-## 📄 License & Attribution
+## Security Baseline & Admin Route Obfuscation
 
-This repository is distributed under the [MIT License](./LICENSE). Designed and curated by **[pranataa-labs](https://github.com/pranataa-labs)**.
+- **Admin Route Obfuscation:** Administrative routes (`/admin`) are never statically exposed in production. The prefix comes from an environment variable (e.g. `ADMIN_PREFIX`) and default paths return **HTTP 404**.
+- **Strict Role-Based Access Control:** Authorization is enforced on the server, with clear feedback on permission denial.
+- **Input Boundaries:** Parameter binding, anti-CSRF tokens, and HTML sanitization on every input stream.
+- **Automated Guardrails:** `diff-review` blocks hardcoded secrets and `.env` files before commit; `security-audit` runs the four-phase OWASP protocol before release.
+
+---
+
+## License & Attribution
+
+Distributed under the [MIT License](./LICENSE). Designed and curated by **[pranataa-labs](https://github.com/pranataa-labs)**.

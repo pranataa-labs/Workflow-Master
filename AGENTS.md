@@ -55,3 +55,14 @@ Semua pekerjaan rekayasa pada repositori ini WAJIB mematuhi 9 tahapan alur kerja
   Co-authored-by: aria sastra <192975116+ariasastra-dev@users.noreply.github.com>
   ```
   Aturan ini bersifat permanen dan non-negotiable untuk menjaga sinkronisasi kontribusi dan membuka/meningkatkan tier badge GitHub (**Pair Extraordinaire**, **Pull Shark**, dan **YOLO** via alur Branch & PR). DILARANG membuat commit tanpa trailer ini. Selain itu, pada setiap inisialisasi/publikasi repositori baru, AI WAJIB otomatis mengundang akun `ariasastra-dev` sebagai collaborator dengan push permission.
+
+---
+
+## 3. Agent Skills (Prosedur Eksekusi)
+Rules di atas menetapkan kewajiban; skill di [skills/](https://github.com/pranataa-labs/workflow-master/tree/main/skills) menetapkan langkah eksekusinya. Gunakan skill sesuai tahap:
+- **Design/Plan:** `domain-scaffolding` (Rule 16).
+- **Implement:** `clean-code-concise-docs`, `shadcn-admin-design-system`, `laravel-web-studio`.
+- **Verify:** `verify-and-test`. Dilarang mengklaim berhasil tanpa output `scripts/verify.ps1` atau perintah setara.
+- **Review:** `diff-review` (wajib sebelum setiap commit), `security-audit` (wajib bila menyentuh endpoint, auth, upload, atau sebelum rilis), `git-commit-craft`.
+- **Release:** `github-repo-publish` (repo baru, collaborator, topik), `release-deploy-check` (pantau pipeline dan URL live).
+- **Report:** `readme-github-sync` (validasi README, rumus aman GitHub, sinkronisasi topik).
