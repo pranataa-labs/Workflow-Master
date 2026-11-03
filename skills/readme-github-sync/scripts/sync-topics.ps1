@@ -51,6 +51,6 @@ if ($DryRun) {
     exit 0
 }
 
-& gh @args
+& gh @ghArgs
 if ($LASTEXITCODE -ne 0) { Write-Host "[ERROR] gh repo edit failed."; exit 1 }
 Write-Host "[SUCCESS] Topics synchronised."
