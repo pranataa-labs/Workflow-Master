@@ -52,7 +52,7 @@ Aturan format pesan:
 - Gunakan format WhatsApp: `*tebal*`, `_miring_`, baris baru `\n` (di-encode `%0A`
   oleh `rawurlencode`).
 - **Jangan pakai emoji yang tidak umum**; beberapa perangkat lama merusak encoding.
-  Emoji dasar (🛒 📅 📍) aman, tetapi gunakan secukupnya.
+  Emoji dasar (  ) aman, tetapi gunakan secukupnya.
 - Panjang URL total usahakan < 2.000 karakter; jika item sangat banyak, ringkas
   (tampilkan 10 item pertama + "dan N item lainnya — detail: {link order}").
 - Sertakan **kode order** dan **link status order** (signed URL) agar admin bisa

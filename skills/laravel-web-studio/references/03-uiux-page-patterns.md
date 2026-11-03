@@ -29,7 +29,7 @@ Notasi: **[M]** = perilaku mobile, **[D]** = desktop.
 
 | # | Section | Isi & aturan |
 |---|---|---|
-| 1 | **Hero** | Headline manfaat (≤ 8 kata) + subheadline + CTA primer "Pesan via WhatsApp" + CTA sekunder "Lihat Katalog" + foto produk unggulan (LCP, `fetchpriority="high"`). Trust mini di bawah CTA: "★ 4.9 · 1.200+ pelanggan · Halal". [M] foto di atas atau di bawah teks, tinggi hero ≤ 90svh, CTA terlihat tanpa scroll. [D] split 50/50 atau 5/7. |
+| 1 | **Hero** | Headline manfaat (≤ 8 kata) + subheadline + CTA primer "Pesan via WhatsApp" + CTA sekunder "Lihat Katalog" + foto produk unggulan (LCP, `fetchpriority="high"`). Trust mini di bawah CTA: "Rating 4.9/5 · 1.200+ pelanggan · Halal". [M] foto di atas atau di bawah teks, tinggi hero ≤ 90svh, CTA terlihat tanpa scroll. [D] split 50/50 atau 5/7. |
 | 2 | **Trust strip** | 3–4 poin ikon + teks pendek (Antar se-kota, Dibuat fresh, Bisa custom, Bayar QRIS). [M] scroll horizontal atau grid 2×2. |
 | 3 | **Kategori unggulan** | 4–6 kartu kategori bergambar → link ke katalog terfilter. [M] scroll-snap horizontal. |
 | 4 | **Produk terlaris** | 4–8 product card + link "Lihat semua". |

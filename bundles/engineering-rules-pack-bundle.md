@@ -1029,7 +1029,7 @@ Pipeline wajib memvalidasi 6 asersi kualitas: *Uniqueness*, *Completeness*, *Ran
 - **Fluid Typography:** Terapkan CSS `clamp()` untuk heading dan spacing responsif tanpa layout shift (CLS).
 
 ## 3. Humanized Writing & Natural Communication
-- **Banned AI Tropes:** Dilarang menggunakan frasa *"delve"*, *"testament to"*, *"in today's fast-paced world"*, *"beacon of innovation"*, atau formula *"not only X but also Y"*.
+- **Banned AI Tropes:** Dilarang menggunakan frasa `delve`, `testament to`, `in today's fast-paced world`, `beacon of innovation`, atau formula `not only X but also Y`.
 - **Authentic Voice:** Tulis teks copy UI dan dokumentasi secara lugas, ringkas, aktif, dan berorientasi pada nilai nyata pengguna.
 
 ## 4. Autonomous Security Audit Protocol

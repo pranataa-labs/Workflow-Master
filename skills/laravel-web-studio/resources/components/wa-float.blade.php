@@ -23,7 +23,7 @@
         x-transition:leave-end="opacity-0 translate-y-1"
         class="hidden sm:block absolute right-16 mr-2 whitespace-nowrap rounded-xl bg-ink-900 px-3.5 py-1.5 text-xs font-medium text-white shadow-lg pointer-events-none"
     >
-        Ada pertanyaan? Chat kami via WhatsApp 👋
+        Ada pertanyaan? Chat kami via WhatsApp 
         <div class="absolute -right-1 top-1/2 -translate-y-1/2 border-4 border-transparent border-l-ink-900"></div>
     </div>
 

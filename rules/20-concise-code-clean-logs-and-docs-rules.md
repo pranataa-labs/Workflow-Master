@@ -15,7 +15,7 @@ Rekayasa perangkat lunak profesional mengutamakan kejelasan, kepadatan informasi
 ## 2. Standar Log Terminal & Keluaran Program (`print()`, `console.log()`)
 
 ### 2.1 Bebas Emoji (Anti-Emoji Clutter)
-1. **DILARANG** menyematkan emoji (`🚀`, `🎉`, `✨`, `🔥`, `💡`, `✅`, `❌`, dll.) pada pemanggilan logging atau terminal output:
+1. **DILARANG** menyematkan emoji (``, ``, ``, ``, ``, ``, ``, dll.) pada pemanggilan logging atau terminal output:
    - `print()` (Python)
    - `echo` / `Log::info()` / `Log::error()` (PHP / Laravel)
    - `console.log()` / `console.error()` (JavaScript / TypeScript)
@@ -34,7 +34,7 @@ Rekayasa perangkat lunak profesional mengutamakan kejelasan, kepadatan informasi
 - **Contoh Perbandingan:**
   ```python
   # SALAH: Tidak baku, panjang, dan penuh emoji
-  print("🎉 Alhamdulillaah! Proses sinkronisasi data transaksi pelanggan kita hari ini sudah selesai dengan sangat mantap tanpa eror sedikitpun! 🚀🚀")
+  print(" Alhamdulillaah! Proses sinkronisasi data transaksi pelanggan kita hari ini sudah selesai dengan sangat mantap tanpa eror sedikitpun! ")
 
   # BENAR: Baku, singkat, padat, dan menyertakan konteks terukur
   print(f"[INFO] Sinkronisasi transaksi selesai: total={count}, gagal=0, durasi={elapsed:.2f}s")
@@ -54,7 +54,7 @@ Komentar kode adalah dokumen internal antar rekayasawan. Dilarang menabur emoji 
 4. **Contoh Perbandingan:**
    ```php
    // SALAH: Mengulang kode dan menggunakan emoji
-   // 🛑 Cek apakah user ada atau tidak 🤔
+   //  Cek apakah user ada atau tidak 
    if (!$user) { ... }
 
    // BENAR: Menjelaskan alasan dan tindakan secara baku dan ringkas
@@ -92,8 +92,8 @@ Komentar kode adalah dokumen internal antar rekayasawan. Dilarang menabur emoji 
 
 | Area | Yang Dilarang | Yang Wajib Diterapkan |
 |---|---|---|
-| **Pesan Log / Print** | `print("🚀 Berhasil!")` | `print("[SUCCESS] Inisialisasi model selesai")` |
-| **Komentar Kode** | `# 🛒 Hitung total belanjaan` | `# Kalkulasi subtotal dan terapkan diskon kupon aktif` |
-| **Heading README** | `## 📸 Tangkapan Layar 🖼️` | `## Tangkapan Layar Aplikasi` |
+| **Pesan Log / Print** | `print(" Berhasil!")` | `print("[SUCCESS] Inisialisasi model selesai")` |
+| **Komentar Kode** | `#  Hitung total belanjaan` | `# Kalkulasi subtotal dan terapkan diskon kupon aktif` |
+| **Heading README** | `##  Tangkapan Layar ️` | `## Tangkapan Layar Aplikasi` |
 | **Gaya Bahasa** | Percakapan santai, singkatan gaul, retorika AI klise | Bahasa baku KBBI/PUEBI atau Technical English formal |
 | **Panjang Teks** | Paragraf bertele-tele dan repetitif | Singkat, padat, berorientasi fakta dan instruksi teknis nyata |

@@ -115,12 +115,12 @@ dan arah desain awal (detail desain di `02-uiux-design-system.md`).
 
 ### 3.1 Formula
 - **Hero headline** (≤ 8 kata): manfaat utama + diferensiasi.
-  - ✅ "Kue Ulang Tahun Homemade, Diantar di Hari Spesialmu"
-  - ❌ "Selamat Datang di Website Kami"
+  - [BENAR] "Kue Ulang Tahun Homemade, Diantar di Hari Spesialmu"
+  - [SALAH] "Selamat Datang di Website Kami"
 - **Subheadline** (≤ 20 kata): siapa, apa, di mana, kenapa percaya.
 - **CTA**: kata kerja + hasil. "Pesan via WhatsApp", "Lihat Katalog", "Cek Ketersediaan".
 - **USP 3–4 poin**: konkret & terukur ("Dibuat H-1, tanpa pengawet", "Antar se-Kota
-  Bandung", "4.9★ dari 1.200+ ulasan Google").
+  Bandung", "4.9/5 dari 1.200+ ulasan Google").
 - **Deskripsi produk**: 1 kalimat sensori + spesifikasi (ukuran, porsi, isi, daya tahan).
 - **FAQ**: jawab keberatan nyata (lead time, ongkir, pembayaran, refund, custom).
 

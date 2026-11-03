@@ -13,7 +13,7 @@ AI coding assistant cenderung memproduksi antarmuka yang jatuh pada titik "rata-
 
 Desain berstandar produksi **WAJIB** memiliki karakter (*taste, craftsmanship, and domain identity*):
 
-### 🚫 7 Dosa Estetika AI (*Banned AI Aesthetics*)
+### 7 Dosa Estetika AI (*Banned AI Aesthetics*)
 1. **Dilarang Neon Purple / Violet Gradient Hero Overload:** Jangan gunakan latar belakang gradien ungu-violet kebiruan kecuali secara spesifik diwajibkan oleh identitas brand. Gunakan palet berkarakter: slate-oklch yang tenang, monokrom kontras tinggi, earth-tone hangat, atau aksen warna tunggal yang tegas (*bold editorial accents*).
 2. **Dilarang Susunan 3 Kartu Identik (*Cookie-Cutter Card Grid*):** Hindari membagi bagian fitur menjadi 3 kartu seragam dengan ikon melingkar kecil di bagian atas. Variasikan ritme visual dengan **Bento Grid** asimetris, perbandingan horizontal, daftar bernomor editorial, atau kartu berbobot visual berbeda (*visual hierarchy*).
 3. **Dilarang Kartu di Dalam Kartu (*Nested Card Border Bloat*):** Hindari membungkus elemen dalam kotak bergaris, lalu memasukkannya lagi ke dalam kontainer bergaris lain (`border border-slate-200` bersarang). Gunakan *whitespace*, pemisah garis tipis halus (*subtle divider*), atau perubahan kontras latar belakang lembut (*subtle surface tinting*) sebagai gantinya.
@@ -28,7 +28,7 @@ Desain berstandar produksi **WAJIB** memiliki karakter (*taste, craftsmanship, a
 
 Masyarakat modern mengakses website mayoritas dari layar ponsel (360px – 430px). Antarmuka web tidak boleh sekadar "bisa mengecil", melainkan harus **dirancang khusus untuk interaksi jempol (*thumb-driven navigation*)**:
 
-### 📱 Prinsip Ergonomi Layar Sentuh Handphone
+### Prinsip Ergonomi Layar Sentuh Handphone
 1. **Touch Target Minimal (Fitts's Law):**
    - Ukuran elemen yang dapat diklik (tombol, tautan, ikon) **WAJIB minimal 44 × 44 pt / px** (standar Apple Human Interface Guidelines) atau **48 × 48 dp / px** (standar Google Material Design 3).
    - Berikan *padding hit-area* transparan jika ikon visual berukuran kecil (misal ikon 20px dibungkus tombol dengan padding minimal `p-3`).
@@ -63,22 +63,22 @@ Masyarakat modern mengakses website mayoritas dari layar ponsel (360px – 430px
 
 Teks tombol, microcopy UI, pesan konfirmasi, artikel, dan dokumentasi yang dihasilkan AI sering kali terkesan hampa, kaku, dan bertele-tele. Terapkan prinsip penulisan manusiawi (*humanized voice*):
 
-### 🚫 Frasa & Retorika Terlarang (*Banned AI Tropes*)
+### Frasa & Retorika Terlarang (*Banned AI Tropes*)
 1. **Dilarang Frasa Pembuka Berlebihan:**
-   - ❌ *"In today's fast-paced digital landscape..."*
-   - ❌ *"In the realm of modern technology..."*
-   - ❌ *"Delve into the intricacies of..."*
-   - ❌ *"A testament to our unwavering commitment..."*
-   - ❌ *"Unleash the full potential of..."*
+   - [SALAH] *"In today's fast-paced digital landscape..."*
+   - [SALAH] *"In the realm of modern technology..."*
+   - [SALAH] *"Delve into the intricacies of..."*
+   - [SALAH] *"A testament to our unwavering commitment..."*
+   - [SALAH] *"Unleash the full potential of..."*
 2. **Dilarang Rumus Retorika Klise:**
-   - ❌ Konstruksi *"Not only X, but also Y"* atau *"It's not just a product, it's a revolution."*
-   - ❌ Pengantar dramatis buatan: *"Here's the thing:"*, *"Let that sink in."*
-   - ❌ Triad kata sifat yang dipaksakan (*forced triads*): *"seamless, robust, and intuitive."*
+   - [SALAH] Konstruksi *"Not only X, but also Y"* atau *"It's not just a product, it's a revolution."*
+   - [SALAH] Pengantar dramatis buatan: *"Here's the thing:"*, *"Let that sink in."*
+   - [SALAH] Triad kata sifat yang dipaksakan (*forced triads*): *"seamless, robust, and intuitive."*
 3. **Dilarang Kalimat Penutup Puitis Hampa (*Empty Profundity*):**
-   - ❌ *"As we look to the horizon, the journey has just begun."*
-   - ❌ *"Serving as a beacon of innovation."*
+   - [SALAH] *"As we look to the horizon, the journey has just begun."*
+   - [SALAH] *"Serving as a beacon of innovation."*
 
-### ✅ Kaidah Tulisan Manusiawi:
+### [BENAR] Kaidah Tulisan Manusiawi:
 - **Langsung pada Fakta & Nilai Nyata:** Jelaskan apa yang dilakukan fitur, bagaimana cara kerjanya, dan apa manfaat langsung bagi pengguna.
 - **Ragam Bahasa Natural & Ringkas:** Gunakan kalimat aktif, kata kerja konkrit, dan bahasa percakapan profesional (*clear, concise, authentic prose*).
 

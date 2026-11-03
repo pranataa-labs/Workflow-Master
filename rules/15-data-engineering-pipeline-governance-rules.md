@@ -17,7 +17,7 @@
 ## 2. Arsitektur dan Pemodelan Data (Data Layering)
 - **WAJIB:** Terapkan pemisahan lapisan data yang jelas (misalnya pola *Medallion Architecture*):
   1. **Bronze Layer (Raw / Ingestion):** Data mentah persis seperti yang diterima dari source (API, IoT, Webhook, CDC). Bersifat append-only, immutable, dan menyimpan timestamp penerimaan data.
-  2. **Silver Layer (Cleaned & Conformed):** Data yang telah melalui deduplikasi, validasi tipe data, normalisasi format tanggal/waktu (UTC standard), pembersihan anomali, dan standarisasi nama kolom.
+  2. **Silver Layer (Cleaned & Conformed):** Data yang telah melalui deduplikasi, validasi tipe data, normalisasi format tanggal/waktu (UTC standard), pembersihan anomali, dan standardisasi nama kolom.
   3. **Gold Layer (Curated & Aggregated):** Data bisnis siap saji yang dimodelkan dalam bentuk *Dimensional Model* (Star Schema: Fact & Dimension tables) atau *Data Mart* khusus domain bisnis.
 - **WAJIB:** Semua tabel dimensi (*Dimension Tables*) harus mendefinisikan strategi penanganan perubahan historis (misal: SCD Type 1 untuk overwrite langsung, atau SCD Type 2 untuk mempertahankan riwayat perubahan menggunakan kolom `effective_start_date`, `effective_end_date`, dan `is_current`).
 - **WAJIB:** Semua tabel fakta (*Fact Tables*) harus memiliki granularity yang terdefinisi secara eksplisit dan immutable (append-only record transaksi atau snapshots).
