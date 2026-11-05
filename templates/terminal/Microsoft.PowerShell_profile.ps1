@@ -377,6 +377,24 @@ function scan-diff {
     & "$script:GlobalSkillsDir\diff-review\scripts\scan-diff.ps1"
 }
 
+function ship-pr {
+    param(
+        [Parameter(Mandatory=$true)]
+        [ValidateSet('feat', 'fix', 'refactor', 'perf', 'test', 'docs', 'chore', 'style', 'ci', 'build', 'revert')]
+        [string]$Type,
+        [Parameter(Mandatory=$true)][string]$Subject,
+        [string]$Scope = "",
+        [string]$Body = "",
+        [string]$Branch = "",
+        [string]$Base = "main",
+        [string]$Remote = "origin",
+        [string[]]$SyncRemotes = @()
+    )
+    & "$script:GlobalSkillsDir\git-commit-craft\scripts\ship-pr.ps1" `
+        -Type $Type -Scope $Scope -Subject $Subject -Body $Body `
+        -Branch $Branch -Base $Base -Remote $Remote -SyncRemotes $SyncRemotes
+}
+
 function run-eda {
     param(
         [Parameter(Mandatory=$true)][string]$InputFile,
@@ -499,6 +517,7 @@ function info {
     )
 
     $secAgents = @(
+        @("ship-pr <type> <subject>", "Otomatis Branch -> Commit Co-Author -> Buat PR -> Merge PR (Pull Shark +1)"),
         @("install-agents", "Pasang AGENTS.md (16 Skills & 20 Rules) ke folder proyek aktif"),
         @("update-skills", "Perbarui seluruh 16 skill ke direktori global ~/.gemini/config/skills"),
         @("lint-ui [path]", "Cek kualitas UI/UX anti-slop (gradien AI, tabular-nums, transition-all)"),
@@ -550,6 +569,7 @@ function info {
     )
 
     $secGit = @(
+        @("ship-pr <type> 'pesan'", "Otomatis buat branch, commit co-author, buka PR, & merge PR (Pull Shark +1)"),
         @("git status", "Lihat status perubahan berkas pada repositori Git"),
         @("git add -A", "Tambahkan seluruh perubahan berkas ke staging area"),
         @("git commit -m 'pesan'", "Simpan commit perubahan ke riwayat lokal"),

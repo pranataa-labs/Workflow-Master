@@ -54,6 +54,7 @@ Semua pekerjaan rekayasa pada repositori ini WAJIB mematuhi 9 tahapan alur kerja
   Co-authored-by: aria sastra <192975116+ariasastra-dev@users.noreply.github.com>
   ```
   Aturan ini bersifat permanen dan non-negotiable untuk menjaga sinkronisasi kontribusi dan membuka/meningkatkan tier badge GitHub (**Pair Extraordinaire**, **Pull Shark**, dan **YOLO** via alur Branch & PR). DILARANG membuat commit tanpa trailer ini. Selain itu, pada setiap inisialisasi/publikasi repositori baru, AI WAJIB otomatis mengundang akun `ariasastra-dev` sebagai collaborator dengan push permission.
+- **Rule 12.2 — Mandatory Branch & Pull Request Flow (Dilarang Direct Push ke `main`):** Pada SETIAP pembaruan kode, perbaikan bug, refaktorisasi, maupun pembaruan dokumentasi di repositori yang telah memiliki cabang utama (`main`), AI **DILARANG KERAS** melakukan *direct push* (`git push origin main`). AI **WAJIB** secara otomatis dan mandiri menjalankan alur **Branch -> Commit (dengan Co-Author Rule 12.1) -> Push Branch -> Buat Pull Request (`gh pr create`) -> Merge Pull Request (`gh pr merge --merge --delete-branch`) -> Pull `main`** menggunakan skrip `skills/git-commit-craft/scripts/ship-pr.ps1` agar setiap pengiriman kode secara konsisten meningkatkan pencapaian lencana **Pull Shark**, **Pair Extraordinaire**, dan **YOLO**.
 
 ---
 
@@ -64,6 +65,6 @@ Rules di atas menetapkan kewajiban; skill di [skills/](https://github.com/pranat
 - **Implement (Web & UI):** `clean-code-concise-docs` (KBBI, anti-emoji, `scripts/check-code-hygiene.ps1`), `shadcn-admin-design-system` (4 komposisi backoffice Mode Operate), `laravel-web-studio`.
 - **Implement (Data Science & ML):** `data-science-workbench` (uji hipotesis, efek ukuran, koreksi Holm-Bonferroni, `scripts/stat-test.py`), `ml-model-engineering` (Pipeline anti-leakage, perbandingan baseline vs kandidat, slice analysis, `scripts/train-evaluate-baseline.py`).
 - **Verify:** `verify-and-test` (`scripts/verify.ps1`). Dilarang mengklaim berhasil tanpa bukti output eksekusi nyata.
-- **Review:** `diff-review` (`scripts/scan-diff.ps1`, wajib sebelum setiap commit), `security-audit` (`scripts/audit-recon.ps1`, wajib sebelum rilis), `git-commit-craft`.
+- **Review:** `diff-review` (`scripts/scan-diff.ps1`, wajib sebelum setiap commit), `security-audit` (`scripts/audit-recon.ps1`, wajib sebelum rilis), `git-commit-craft` (`scripts/ship-pr.ps1`, wajib untuk alur Branch & PR).
 - **Release:** `github-repo-publish` (`scripts/publish-repo.ps1`), `release-deploy-check` (`scripts/check-deploy.ps1`).
 - **Report:** `readme-github-sync` (`scripts/check-readme.ps1`, `scripts/sync-topics.ps1`), `professional-report-writer` (laporan eksekutif Piramida Minto, KPI strip, KaTeX, Cetak/PDF A4, `scripts/build-html-report.py`).
