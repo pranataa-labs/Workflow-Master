@@ -24,7 +24,10 @@ param(
     [string]$Remote = 'origin',
 
     [Parameter(Mandatory = $false)]
-    [string[]]$SyncRemotes = @()
+    [string[]]$SyncRemotes = @(),
+
+    [Parameter(Mandatory = $false)]
+    [switch]$StageAll
 )
 
 $ErrorActionPreference = 'Stop'
@@ -39,16 +42,21 @@ if ([string]::IsNullOrWhiteSpace($cleanSubject)) {
 
 $header = if ($Scope) { "$Type($Scope): $cleanSubject" } else { "$Type`: $cleanSubject" }
 
-# 2. Stage all tracked/untracked modifications if nothing is staged yet
+# 2. Stage modifications if nothing is staged yet (default to tracked files only unless -StageAll is set)
 $staged = git diff --cached --name-only
 if (-not $staged) {
-    Write-Host '[INFO] Staging modified and untracked files (git add -A)'
-    git add -A
+    if ($StageAll) {
+        Write-Host '[INFO] Staging all modified and untracked files (git add -A)'
+        git add -A
+    } else {
+        Write-Host '[INFO] Staging modified tracked files (git add -u)'
+        git add -u
+    }
     $staged = git diff --cached --name-only
 }
 
 if (-not $staged) {
-    Write-Host '[ERROR] No changes found to commit.' -ForegroundColor Red
+    Write-Host '[ERROR] No staged changes found to commit. Use git add <file> or pass -StageAll.' -ForegroundColor Red
     exit 1
 }
 
