@@ -31,7 +31,13 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$CoAuthorTrailer = 'Co-authored-by: aria sastra <192975116+ariasastra-dev@users.noreply.github.com>'
+$CoAuthorTrailer = if ($env:GIT_COAUTHOR_TRAILER) {
+    $env:GIT_COAUTHOR_TRAILER
+} elseif ((git config --get user.coauthor)) {
+    (git config --get user.coauthor)
+} else {
+    'Co-authored-by: aria sastra <192975116+ariasastra-dev@users.noreply.github.com>'
+}
 
 # 1. Validate Conventional Commit subject
 $cleanSubject = $Subject.Trim().TrimEnd('.')

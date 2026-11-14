@@ -10,13 +10,19 @@ param(
     [string]$Owner = "pranataa-labs",
     [string]$Description = "",
     [ValidateSet("public", "private")][string]$Visibility = "public",
-    [string]$Collaborator = "ariasastra-dev",
+    [string]$Collaborator = if ($env:GITHUB_COLLABORATOR) { $env:GITHUB_COLLABORATOR } else { "ariasastra-dev" },
     [switch]$DryRun
 )
 
 # Continue: native git/gh stderr must not abort PS 5.1; exit codes are checked explicitly.
 $ErrorActionPreference = "Continue"
-$CoAuthor = "Co-authored-by: aria sastra <192975116+ariasastra-dev@users.noreply.github.com>"
+$CoAuthor = if ($env:GIT_COAUTHOR_TRAILER) {
+    $env:GIT_COAUTHOR_TRAILER
+} elseif ((git config --get user.coauthor)) {
+    (git config --get user.coauthor)
+} else {
+    "Co-authored-by: aria sastra <192975116+ariasastra-dev@users.noreply.github.com>"
+}
 
 function Step([string]$msg) { Write-Host "[INFO] $msg" }
 function Run([string]$exe, [string[]]$argv) {
