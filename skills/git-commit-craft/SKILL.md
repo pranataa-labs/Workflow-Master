@@ -60,7 +60,7 @@ Pada **SETIAP** commit Git, sertakan trailer co-author akun sekunder pengguna se
 Co-authored-by: aria sastra <192975116+ariasastra-dev@users.noreply.github.com>
 ```
 
-### 1.5 Mandatory Branch & Pull Request Flow (Rule 12.2 — Pull Shark & YOLO Engine)
+### 1.5 Mandatory Branch & Pull Request Flow (Rule 12.2 — Automated PR Delivery Engine)
 Pada setiap repositori yang sudah memiliki cabang utama (`main`), **DILARANG** melakukan *direct push* (`git push origin main`). Seluruh perubahan wajib dikirim melalui siklus cabang fitur dan Pull Request menggunakan skrip otomatis `scripts/ship-pr.ps1`:
 
 ```powershell
@@ -76,7 +76,7 @@ Skrip `ship-pr.ps1` menjalankan 6 tahapan secara otomatis:
 2. Membuat cabang fitur baru (`<type>/<scope>-<slug>-<timestamp>`).
 3. Melakukan commit dengan format Conventional Commits dan menyematkan trailer `Co-authored-by` (Rule 12.1).
 4. Mendorong cabang fitur ke remote dan membuka Pull Request resmi via `gh pr create`.
-5. Menggabungkan (*merge*) Pull Request secara langsung (`gh pr merge --merge --delete-branch`) sehingga penghitung lencana **Pull Shark**, **Pair Extraordinaire**, dan **YOLO** bertambah pada setiap perubahan.
+5. Menggabungkan (*merge*) Pull Request secara langsung (`gh pr merge --merge --delete-branch`) sehingga riwayat audit Pull Request terdokumentasi rapi dan cabang fitur dibersihkan secara otomatis.
 6. Mengembalikan repositori lokal ke cabang `main` dan menarik commit hasil merge (`git pull`).
 
 ---

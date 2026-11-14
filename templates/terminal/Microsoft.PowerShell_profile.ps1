@@ -1,4 +1,4 @@
-# ==============================================================================
+﻿# ==============================================================================
 # NCCA & PRANATAA LABS — POWERSHELL TERMINAL PROFILE (v2.2.0)
 # Terintegrasi dengan Workflow Master (16 Agent Skills & 20 Engineering Rules)
 # ==============================================================================
@@ -517,7 +517,7 @@ function info {
     )
 
     $secAgents = @(
-        @("ship-pr <type> <subject>", "Otomatis Branch -> Commit Co-Author -> Buat PR -> Merge PR (Pull Shark +1)"),
+        @("ship-pr <type> <subject>", "Otomatis Branch -> Commit Co-Author -> Buat PR -> Merge PR"),
         @("install-agents", "Pasang AGENTS.md (16 Skills & 20 Rules) ke folder proyek aktif"),
         @("update-skills", "Perbarui seluruh 16 skill ke direktori global ~/.gemini/config/skills"),
         @("lint-ui [path]", "Cek kualitas UI/UX anti-slop (gradien AI, tabular-nums, transition-all)"),
@@ -569,7 +569,7 @@ function info {
     )
 
     $secGit = @(
-        @("ship-pr <type> 'pesan'", "Otomatis buat branch, commit co-author, buka PR, & merge PR (Pull Shark +1)"),
+        @("ship-pr <type> 'pesan'", "Otomatis buat branch, commit co-author, buka PR, & merge PR"),
         @("git status", "Lihat status perubahan berkas pada repositori Git"),
         @("git add -A", "Tambahkan seluruh perubahan berkas ke staging area"),
         @("git commit -m 'pesan'", "Simpan commit perubahan ke riwayat lokal"),

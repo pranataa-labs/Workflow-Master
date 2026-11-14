@@ -83,11 +83,11 @@ Jika tidak diminta commit, jangan commit secara otomatis.
 
   Co-authored-by: aria sastra <192975116+ariasastra-dev@users.noreply.github.com>
   ```
-- **Alur Branch & Pull Request Wajib (Rule 12.2 — Achievement & Contribution Sync):**
+- **Alur Branch & Pull Request Wajib (Rule 12.2 — Automated PR Delivery & Branch Protection):**
   - **WAJIB (OTOMATIS TANPA PERINTAH):** Pada seluruh repositori yang telah memiliki cabang utama (`main`), AI **DILARANG** melakukan *direct push* (`git push origin main`) untuk penambahan fitur, perbaikan bug, refaktorisasi, maupun pembaruan dokumentasi.
   - **Prosedur Wajib:** Setiap perubahan **WAJIB** dikirim melalui alur cabang (`git checkout -b <type>/<slug>`), di-commit dengan trailer co-author Rule 12.1, di-push ke cabang tersebut, lalu dibuka dan digabungkan via Pull Request (`gh pr create` dan `gh pr merge --merge --delete-branch`) menggunakan skrip [`skills/git-commit-craft/scripts/ship-pr.ps1`](../skills/git-commit-craft/scripts/ship-pr.ps1).
-  - Aturan ini mendistribusikan kontribusi harian secara simultan ke kedua profil akun (`pranataa-labs` dan `ariasastra-dev`), serta secara konsisten membuka dan meningkatkan tier lencana resmi GitHub (**Pull Shark**, **Pair Extraordinaire**, dan **YOLO**) pada setiap tugas.
-- **Otomatisasi Undangan Collaborator:** Setiap kali AI menginisialisasi atau mempublikasikan repositori baru ke GitHub organisasi/pengguna, AI WAJIB secara otomatis mengundang akun `ariasastra-dev` sebagai collaborator dengan push permission (`gh api -X PUT /repos/<owner>/<repo>/collaborators/ariasastra-dev -f permission=push`) tanpa perlu diminta.
+  - Aturan ini menegakkan akuntabilitas rekayasa berpasangan (paired-engineering accountability), menjaga integritas riwayat kontribusi tim, dan memastikan seluruh perubahan tercatat di log Pull Request sebelum masuk ke cabang utama.
+- **Otomatisasi Undangan Collaborator:** Setiap kali AI menginisialisasi atau mempublikasikan repositori baru ke GitHub organisasi/pengguna, AI WAJIB secara otomatis mengundang akun collaborator yang ditunjuk (`ariasastra-dev`) sebagai collaborator dengan push permission (`gh api -X PUT /repos/<owner>/<repo>/collaborators/ariasastra-dev -f permission=push`) tanpa perlu diminta.
 - **Skill Pelengkap (*Git Commit Craft*):** Untuk otomatisasi alur Branch & PR (`scripts/ship-pr.ps1`), hook commitlint, husky, template pesan commit, dan generator `CHANGELOG.md` via `git-cliff`, gunakan skill terpadu pada [`skills/git-commit-craft/SKILL.md`](../skills/git-commit-craft/SKILL.md) dan template di [`templates/git/`](../templates/git/).
 
 ## 9. Definition of Done
